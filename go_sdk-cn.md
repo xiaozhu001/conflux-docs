@@ -286,8 +286,8 @@ func (client *Client) Debug(method string, args ...interface{}) (interface{}, er
 func (client *Client) DeployContract(option *types.ContractDeployOption, abiJSON []byte,
 	bytecode []byte, constroctorParams ...interface{}) *ContractDeployResult
 ```
-"关键字DeployContract通过abiJSON、字节码和构造函数参数（constructor params）部署合约。
-它返回一个ContractDeployState实例，该实例包含3个通道，用于在状态更改时通知的。"
+关键字DeployContract通过abiJSON、字节码和构造函数参数（constructor params）部署合约。
+它返回一个ContractDeployState实例，该实例包含3个通道，用于在状态更改时通知的。
 
 #### func (*Client) EstimateGasAndCollateral函数
 
@@ -503,24 +503,23 @@ func (contract *Contract) DecodeEvent(out interface{}, event string, log types.L
 ```go
 func (contract *Contract) GetData(method string, args ...interface{}) ([]byte, error)
 ```
-"关键字GetData打包给定的方法名使之与合约的ABI一致。方法调用的数据将由method_id, args0, arg1, ...argN组成。
+关键字GetData打包给定的方法名使之与合约的ABI一致。方法调用的数据将由method_id, args0, arg1, ...argN组成。
 Method id由4个字节组成，参数都是32个字节。Method id是从字符串签名的方法的哈希值的前4个字节创建的。
 （签名=baz（uint32，string32））
 
 请参考https://github.com/Conflux-Chain/go-Conflux-sdk/blob/master/README.md获取solidity类型到go类型的映射
 
-"
 
 #### func (*Contract) SendTransaction函数
 
 ```go
 func (contract *Contract) SendTransaction(option *types.ContractMethodSendOption, method string, args ...interface{}) (*types.Hash, error)
 ```
-"关键字SendTransaction使用参数（args）将交易发送到智能合约方法并返回其交易哈希值
+关键字SendTransaction使用参数（args）将交易发送到智能合约方法并返回其交易哈希值
 
 
 
-请参考https://github.com/Conflux-Chain/go-Conflux-sdk/blob/master/README.md获取solidity类型到go类型的映射"
+请参考https://github.com/Conflux-Chain/go-Conflux-sdk/blob/master/README.md获取solidity类型到go类型的映射
 
 ### type ContractDeployResult函数
 
@@ -567,14 +566,14 @@ func PrivateKeyToPublicKey(privateKey string) string
 ```go
 func PublicKeyToAddress(publicKey string) types.Address
 ```
-"关键字PublicKeyToAddress根据公钥生成地址
+关键字PublicKeyToAddress根据公钥生成地址
 
-conflux的账户地址以“0x1”开头"
+conflux的账户地址以“0x1”开头
 
 #### func ToCfxGeneralAddress函数
 
 ```go
 func ToCfxGeneralAddress(address common.Address) types.Address
 ```
-"关键字ToCfxGeneralAddress将普通地址转换为conflux 格式常规地址，
-其十六进制字符串以“0x1”开头"
+关键字ToCfxGeneralAddress将普通地址转换为conflux 格式常规地址，
+其十六进制字符串以“0x1”开头
