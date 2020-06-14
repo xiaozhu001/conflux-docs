@@ -7,27 +7,27 @@ keywords:
   - contract
 ---
 
-## AdminControl
+## 管理与控制
 
-The contract address is `0x8060de9e1568e69811c4a398f92c3d10949dc891`.
+合约地址为`0x8060de9e1568e69811c4a398f92c3d10949dc891`。
 
-+ `set_admin(address contract, address admin)`: Set the administrator of contract `contract` to `admin`. The caller should be the administrator of `contract` and it should be a normal account. Caller should make sure that `contract` should be an address of a contract and `admin` should be a normal account address. Otherwise, the call will fail.
++ `set_admin(address contract, address admin)`: 设置`admin`为合约`contract`的管理员。函数调用者应为合约`contract`的管理员且账号状态正常。调用者要确保`contract`字段确实写入了合约地址且`admin`字段是正常的账户地址。否则，调用失败。
 
-+ `destroy(address contract)`: Perform a suicide of the contract `contract`. The caller should be the administrator of `contract` and it should be a normal account. If the collateral for storage of the contract is not zero, the suicide will fail. Otherwise, the `balance` of `contract` will be refunded to the current administrator, the `sponsor_balance_for_gas` will be refunded to `sponsor_for_gas`, the `sponsor_balance_for_collateral` will be refunded to `sponsor_for_collateral`.
++ `destroy(address contract)`: 销毁合约`contract`。函数调用者应为合约`contract`的管理员且账号状态正常。若合约担保非0，则销毁合约失败.否则，合约`contract`的`balance`退还给现任管理者处。`sponsor_balance_for_gas`将会退还到`sponsor_for_gas`，`sponsor_balance_for_collateral`则会退还到`sponsor_for_collateral`。
 
-## SponsorWhitelistControl
+## 赞助人白名单控制
 
-The contract address is `0x8ad036480160591706c831f0da19d1a424e39469`.
+合约地址为`0x8ad036480160591706c831f0da19d1a424e39469`.
 
-+ `set_sponsor_for_gas(address contract, uint upper_bound)`: If someone wants to sponsor the gas fee for a contract with address `contract`, he/she (it can be a contract account) should call this function and in the meantime transfer some tokens to the address `0x8ad036480160591706c831f0da19d1a424e39469`. The parameter `upper_bound` is the upper bound of the gas fee the sponsor will pay for a single transaction. The number of transfered tokens should be at least 1000 times of the `upper_bound`. The sponsor could be replaced if the new sponsor transfers more tokens and sets a larger upper bound. The current sponsor can also call the function to transfer more tokens to sponsor the contract. The `upper_bound` can be changed to a smaller one if current sponsor balance is less than the `upper_bound`.
-+ `set_sponsor_for_collateral(address contract_addr)`: If someone wants to sponsor the CFS (collateral for storage) for a contract with address `contract`, he/she (it can be a contract account) should call this function and in the meantime transfer some tokens to the address `0x8ad036480160591706c831f0da19d1a424e39469`. The sponsor could be replaced if the new sponsor transfers more tokens. The current sponsor can also call the function to transfer more tokens to sponsor the contract.
-+ `add_privilege(address[] memory)`: A contract can call this function to add some normal account address to the whitelist. It means that if the `sponsor_for_gas` is set, the contract will pay the gas fee for the accounts in the whitelist, and if the `sponsor_for_collateral` is set, the contract will pay the CFS (collateral for storage) for the accounts in the whitelist. A special address `0x0000000000000000000000000000000000000000` could be used if the contract wants to add all account to the whitelist.
-+ `remove_privilege(address[] memory)`: A contract can call this function to remove some normal account address from the whitelist.
++ `set_sponsor_for_gas(address contract, uint upper_bound)`: 如果有人希望向合约地址`contract`赞助燃料费用, 他/她（也可以是合约账户）可以在调用该函数的同时向地址`0x8ad036480160591706c831f0da19d1a424e39469`传输代币，参数`upper_bound`是指赞助者为单笔交易支付的燃料费用上限。传输的代币量至少为参数`upper_bound`的1000倍。 赞助者可能会被赞助更多代币同时设置更高的上界参数的赞助者所替换。当前赞助者也可以调用该函数并向该合约传输更多代币。在当前赞助者账户余额小于参数`upper_bound`时 ，`upper_bound`值将被动态调低。
++ `set_sponsor_for_collateral(address contract_addr)`: 如果有人希望向地址为`contract`的合约赞助担保金， 他/她（也可以是合约账户）可以在调用该函数的同时向地址 `0x8ad036480160591706c831f0da19d1a424e39469`传输代币。赞助者可能会被传输更多代币的新赞助者替换而当前赞助者也可通过调用该函数向合约传输更多代币。
++ `add_privilege(address[] memory)`: 合约可通过调用该函数向白名单中加入部分正常账户地址。这意味着，若 `sponsor_for_gas`被设置，合约会向白名单内的账户支付燃料费用，若`sponsor_for_collateral`被设置，则合约会向白名单内账户支付担保金。合约可通过使用特殊地址`0x0000000000000000000000000000000000000000`，能够将所有账户加入到白名单中。
++ `remove_privilege(address[] memory)`: 合约可通过调用该函数从白名单中移除正常账户。
 
-## Staking
+## 权益质押
 
-The contract address is `0x843c409373ffd5c0bec1dddb7bec830856757b65`.
+T合约地址为`0x843c409373ffd5c0bec1dddb7bec830856757b65`.
 
-+ `deposit(uint amount)`: The caller can call this function to deposit some tokens to Conflux Internal Staking Contract. The current annual interest rate is 4%.
-+ `withdraw(uint amount)`: The caller can call this function to withdraw some tokens to Conflux Internal Staking Contract. It will trigger a interest settlement. The staking capital and staking interest will be transferred to the user's balance in time. All the withdrawal applications will be processed on a first-come-first-served basis according to the sequence of staking orders.
-+ `vote_lock(uint amount, uint unlock_block_number)`: This function is related with Voting Rights in Conflux. Staking users can choose the voting amount and locking maturity by locking a certain amount of CFX in a certain maturity from staking. The `unlock_block_number` is measured in the number of blocks since genesis block.
++ `deposit(uint amount)`: 调用者可以通过调用该函数将部分代币存入Conflux内嵌的权益质押合约。目前的年化利率为4%。
++ `withdraw(uint amount)`: 调用者可通过调用该函数从Conflux内嵌的权益质押合约中提取代币。运行该函数将会触发利息结算。权益质押资金和利息将会及时转入到用户账户中。
++ `vote_lock(uint amount, uint unlock_block_number)`: 该函数与Conflux的投票权益相关。权益质押用户可以通过选择投票数额及锁定的到期日锁定一定数目的CFX费用。参数`unlock_block_number`会以创世区块产生以来的区块数目进行度量。
