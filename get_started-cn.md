@@ -28,7 +28,7 @@ $ cd run
 $ ../target/release/conflux --config default.toml
 ```
 
-这段代码回启动全节点并与Conflux区块链测试网同步。
+这段代码会启动全节点并与Conflux区块链测试网同步。
 
 值得一提的是，在当前工作目录( `run` ) 中会创建两个新目录 (`blockchain_db` 和 `net_config`) 以留存数据。除了数据损坏或您想启用一个全新的节点这两种例外情况，不要删除它们。
 
