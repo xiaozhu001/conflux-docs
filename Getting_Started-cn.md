@@ -70,12 +70,12 @@ const account = accounts[0] // We currently only ever provide a single account,
                             // but the array gives us some room to grow.
 ```
 
-## 选择Convience Library
+## 选择便利的开发库
 
-Convience Library的存在原因有很多。
+便利的开发库的存在原因多种多样。
 
 有些是简化了用户界面元素的建立，有些能够有效管理用户账户，还有的能够提供大量和智能合约进行交互的方法、各类API偏好，从promises到callbacks（回调函数），再到strong types（强类型）等。
 
 提供方的API本身非常简单内部封装了[Conflux
-JSON-RPC](https://conflux-chain.github.io/conflux-doc/json-rpc/)格式的消息，因此开发者们通常会使用convenience library与提供方进行交互，如[js-conflux-sdk](https://www.npmjs.com/package/js-conflux-sdk)、
+JSON-RPC](https://conflux-chain.github.io/conflux-doc/json-rpc/)格式的消息，因此开发者们通常会使用便利的开发库与提供方进行交互，如[js-conflux-sdk](https://www.npmjs.com/package/js-conflux-sdk)、
 [conffle](https://github.com/liuis/conffle#readme)等。通过这些工具，一般能找到足够多的文档支撑您与提供方进行交互，而不需要阅读这类低等级API。
