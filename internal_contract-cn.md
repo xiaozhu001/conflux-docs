@@ -26,8 +26,8 @@ keywords:
 
 ## 权益质押
 
-T合约地址为`0x843c409373ffd5c0bec1dddb7bec830856757b65`.
+合约地址为`0x843c409373ffd5c0bec1dddb7bec830856757b65`.
 
 + `deposit(uint amount)`: 调用者可以通过调用该函数将部分代币存入Conflux内嵌的权益质押合约。目前的年化利率为4%。
 + `withdraw(uint amount)`: 调用者可通过调用该函数从Conflux内嵌的权益质押合约中提取代币。运行该函数将会触发利息结算。权益质押资金和利息将会及时转入到用户账户中。
-+ `vote_lock(uint amount, uint unlock_block_number)`: 该函数与Conflux的投票权益相关。权益质押用户可以通过选择投票数额及锁定的到期日锁定一定数目的CFX费用。参数`unlock_block_number`会以创世区块产生以来的区块数目进行度量。
++ `vote_lock(uint amount, uint unlock_block_number)`: 该函数与Conflux的投票权益相关。权益质押用户可以通过选择投票数额及锁定的到期日锁定一定数目的CFX费用。参数`unlock_block_number`会以创世区块产生以来的区块数目度量。
