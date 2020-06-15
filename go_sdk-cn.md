@@ -191,17 +191,17 @@ func NewClientWithRPCRequester(rpcRequester rpcRequester) (*Client, error)
 ```go
 func NewClientWithRetry(nodeURL string, retryCount int, retryInterval time.Duration) (*Client, error)
 ```
-"关键字NewClientWithRetry使用指定的conflux节点url地址和重试选项创建可重试的新客户端实例。
-如果通过0，则重试间隔将设置为1秒"
+关键字NewClientWithRetry使用指定的conflux节点url地址和重试选项创建可重试的新客户端实例。
+如果通过0，则重试间隔将设置为1秒
 
-#### func (*Client) ApplyUnsignedTransactionDefault
+#### func (*Client) ApplyUnsignedTransactionDefault函数
 
 ```go
 func (client *Client) ApplyUnsignedTransactionDefault(tx *types.UnsignedTransaction) error
 ```
 ApplyUnsignedTransactionDefault将从conflux节点获取的值设置为空字节段
 
-#### func (*Client) BatchCallRPC
+#### func (*Client) BatchCallRPC函数
 
 ```go
 func (client *Client) BatchCallRPC(b []rpc.BatchElem) error
