@@ -1,12 +1,12 @@
 
 
-用户的账户在Conflux中的各种应用场境中都有使用，它们的标志整洁，但没有任何用途比调用_wallet methods_方法更重要。由于这类方法涉及到签名或交易审批。所有这些方法都需要转出账户作为函数参数。
+用户的账户在Conflux中的各种应用场境中都有使用，它们的标志整洁，但没有任何一项调用比调用_wallet methods_方法更重要。由于这类方法会涉及到签名或交易审批。所有这类方法都需要交易发送账户作为函数参数。
 
 - `cfx_sendTransaction`
 
-     一旦您连接到一个用户，您可以随时通过检查 conflux.selectedAddress 来重新检查当前账户。
+     一旦您连接到一个用户，您可以随时通过检查 `conflux.selectedAddress` 来重新检查当前账户。
 
-    如果你想在地址改变时收到通知，我们有一个event可以供你们使用：
+    如果你想在地址改变时收到通知，我们提供了一个事件可供使用：
 
 ```javascript
 conflux.on('accountsChanged', function (accounts) {
