@@ -211,3 +211,13 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/independent_chain
 
 ## 五、go-conflux-sdk
+
+#### 1、 api.md API参考
+English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/api.md
+
+中文地址：
+
+#### 2、 README.md 文档介绍
+English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/README.md
+
+中文地址：
