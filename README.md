@@ -119,5 +119,21 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 中文地址：
 
 ## 三、js-conflux-sdk
+#### 1、api.md API参考文档
+English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md
+
+中文地址：
+
+#### 2、README.md 文档介绍
+English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/README.md
+
+中文地址：
+
+#### 3、CHANGE_LOG.md 变更记录
+English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/CHANGE_LOG.md
+
+中文地址：
+
+
 ## 四、conflux-doc
-## 无、go-conflux-sdk
+## 五、go-conflux-sdk
