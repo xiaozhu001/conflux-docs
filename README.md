@@ -150,7 +150,23 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 4、 docs/trans.md 交易
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/trans.md
+#### 4、  docs/design.md 设计
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/design.md
 
+中文地址：
+
+#### 5、 docs/install.md 安装
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/install.md
+
+中文地址：
+
+#### 6、 docs/stratum.md Stratum协议介绍
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/stratum.md
+
+中文地址：
+
+#### 7、 docs/json-rpc.md json-rps方法
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md
+
+中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法
 ## 五、go-conflux-sdk
