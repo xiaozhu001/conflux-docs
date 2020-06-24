@@ -169,4 +169,15 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法
+
+#### 8、 docs/consensus.md 共识
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/consensus.md
+
+中文地址：
+
+#### 9、 docs/get_started.md 启程
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md
+
+中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/get_started
+
 ## 五、go-conflux-sdk
