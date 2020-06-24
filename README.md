@@ -180,4 +180,34 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/get_started
 
+#### 10、docs/javascript-api.md JavaScript API介绍
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/javascript-api.md
+
+中文地址：
+
+#### 11、 docs/key_management.md 密钥管理
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/key_management.md
+
+中文地址：
+
+#### 12、 docs/test_framework.md 测试框架
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/test_framework.md
+
+中文地址：
+
+#### 13、 docs/rigorous-testing.md 严格测试
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/rigorous-testing.md
+
+中文地址：
+
+#### 14、 docs/send_transaction.md 发送交易
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/send_transaction.md
+
+中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/send_transaction
+
+#### 15、 docs/setup_independent_chain.md 设置独立的区块链
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/setup_independent_chain.md
+
+中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/independent_chain
+
 ## 五、go-conflux-sdk
