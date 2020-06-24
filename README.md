@@ -6,134 +6,151 @@
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/README.md
 
 中文地址： 
-#### 2、CHANGELOG.md 变更记录
+#### 2、 CHANGELOG.md 变更记录
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/CHANGELOG.md
 
 中文地址： 
 
-#### 3、MISSION.md  使命
+#### 3、 MISSION.md  使命
 English link address ： https://github.com/Conflux-Chain/conflux-portal/blob/develop/MISSION.md
 
 中文地址： 
 
-#### 4、docs/README.md  文档介绍
+#### 4、 docs/README.md  文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/README.md
 
 中文地址： 
 
-#### 5、docs/publishing.md 出版指南
+#### 5、 docs/publishing.md 出版指南
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/publishing.md
 
 中文地址：
 
-#### 6、docs/state_dump.md 状态转存
+#### 6、 docs/state_dump.md 状态转存
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/state_dump.md
 
 中文地址：
 
-#### 7、docs/add-to-chrome.md 添加至Chrome浏览器
+#### 7、 docs/add-to-chrome.md 添加至Chrome浏览器
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-chrome.md
 
 中文地址：
 
-#### 8、docs/add-to-firefox.md 添加至火狐浏览器
+#### 8、 docs/add-to-firefox.md 添加至火狐浏览器
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-firefox.md
 
 中文地址：
 
-#### 9、docs/sensitive-release.md 敏感释放协议
+#### 9、 docs/sensitive-release.md 敏感释放协议
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/sensitive-release.md
 
 中文地址：
 
-#### 10、docs/translating-guide.md 翻译指导
+#### 10、 docs/translating-guide.md 翻译指导
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/translating-guide.md
 
 中文地址：
 
-#### 11、docs/secret-preferences.md 私密偏好
+#### 11、 docs/secret-preferences.md 私密偏好
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/secret-preferences.md
 
 中文地址：
 
-#### 12、docs/components/account-menu.md 账户菜单
+#### 12、 docs/components/account-menu.md 账户菜单
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md
 
 中文地址：
 
-#### 13、docs/creating-metrics-events.md 创建度量事件
+#### 13、 docs/creating-metrics-events.md 创建度量事件
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/creating-metrics-events.md
 
 中文地址：
 
-#### 14、docs/porting_to_new_environment.md 移植到新环境
+#### 14、 docs/porting_to_new_environment.md 移植到新环境
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/porting_to_new_environment.md
 
 中文地址：
 
-#### 15、USER_AGREEMENT.md 用户许可
+#### 15、 USER_AGREEMENT.md 用户许可
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/USER_AGREEMENT.md
 
 中文地址：
 
-#### 16、test/e2e/fixtures/README.md （端到端测试）文档介绍
+#### 16、 test/e2e/fixtures/README.md （端到端测试）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/test/e2e/fixtures/README.md
 
 中文地址：
 
-#### 17、app/scripts/controllers/transactions/README.md （交易控制器）文档介绍
+#### 17、 app/scripts/controllers/transactions/README.md （交易控制器）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/app/scripts/controllers/transactions/README.md
 
 中文地址：
 
 
 ## 二、conflux-rust
-#### 1、README.md 文档介绍
+#### 1、 README.md 文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/README.md
 
 中文地址：
 
-#### 2、CHANGELOG.md 变更记录
+#### 2、 CHANGELOG.md 变更记录
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/CHANGELOG.md
 
 中文地址：
 
-#### 3、accounts/cfxstore/README.md （密钥管理）文档介绍
+#### 3、 accounts/cfxstore/README.md （密钥管理）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxstore/README.md
 
 中文地址：
 
-#### 4、internal_contract/README.md （内部合约）文档介绍
+#### 4、 internal_contract/README.md （内部合约）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-rust/internal_contract
 
-#### 5、core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/README.md （snappy）文档介绍
+#### 5、 core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/README.md （snappy）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/README.md
 
 中文地址：
 
-#### 6、core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/CONTRIBUTING.md 贡献
+#### 6、 core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/CONTRIBUTING.md 贡献
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/CONTRIBUTING.md
 
 中文地址：
 
 ## 三、js-conflux-sdk
-#### 1、api.md API参考文档
+#### 1、 api.md API参考文档
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md
 
 中文地址：
 
-#### 2、README.md 文档介绍
+#### 2、 README.md 文档介绍
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/README.md
 
 中文地址：
 
-#### 3、CHANGE_LOG.md 变更记录
+#### 3、 CHANGE_LOG.md 变更记录
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/CHANGE_LOG.md
 
 中文地址：
 
+## 四、conflux-doc 
+#### 1、 docs/cli.md 子命令
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/cli.md
 
-## 四、conflux-doc
+中文地址：
+
+#### 2、 docs/sync.md 同步
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/sync.md
+
+中文地址：
+
+#### 3、 docs/index.md 基本索引
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/index.md
+
+中文地址：
+
+#### 4、 docs/trans.md 交易
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/trans.md
+
 ## 五、go-conflux-sdk
