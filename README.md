@@ -82,11 +82,32 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 中文地址：
 
 #### 17、app/scripts/controllers/transactions/README.md （交易控制器）文档介绍
-https://github.com/Conflux-Chain/conflux-portal/blob/develop/app/scripts/controllers/transactions/README.md
+English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/app/scripts/controllers/transactions/README.md
 
 中文地址：
 
+
 ## 二、conflux-rust
+#### 1、README.md 文档介绍
+English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/README.md
+
+中文地址：
+
+#### 2、CHANGELOG.md 变更记录
+English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/CHANGELOG.md
+
+中文地址：
+
+#### 3、accounts/cfxstore/README.md （密钥管理）文档介绍
+English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxstore/README.md
+
+中文地址：
+
+#### 4、internal_contract/README.md （内部合约）文档介绍
+English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
+
+中文地址：
+
 ## 三、js-conflux-sdk
 ## 四、conflux-doc
 ## 无、go-conflux-sdk
