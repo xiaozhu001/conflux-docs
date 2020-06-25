@@ -20,12 +20,12 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 + `sponsor_for_collateral`: 为存放抵押提供补贴的账户；
 + `sponsor_balance_for_gas`: 可用于燃料费用补贴的余额；
 + `sponsor_balance_for_collateral`: 可用于存放抵押补贴的余额；
-+ `sponsor_limit_for_gas_fee`: 为每笔赞助交易支付的燃料费用上限；
-+ `whitelist`: 为符合补贴条件的正常账户清单，特殊的全0地址特指所有的正常账户。只有合约本身才有权更改该清单。
++ `sponsor_limit_for_gas_fee`: 赞助者愿意为每笔交易提供的资助上限；
++ `whitelist`: 为合约愿意资助的正常账户清单，特殊的全0地址特指所有的正常账户。只有合约本身才有权更改该清单。
 
-There are two resources could be sponsored: gas consumption and storage collateral. 
+有两类资源可以被赞助：燃料费用及存储抵押物。
 
-+ *For gas consumption*: If a transaction calls a contract with non-empty `sponsor_for_gas` and the sender is in the `whitelist` of the contract and the gas fee specified by the transaction is within the `sponsor_limit_for_gas_fee`, the gas consumption of the transaction is paid from the `sponsor_balance_for_gas` of the contract (if it is sufficient) rather than from the sender’s balance, and the execution of the transaction would fail if the `sponsor_balance_for_gas` cannot afford the gas consumption. Otherwise, the sender should pay for the gas consumption.
++ *对于燃料费用*: 如果一笔交易使用非空的 `sponsor_for_gas` 调用智能合约且交易发送者处于合约的 `whitelist` 列表内，且交易指定的燃料费用在 `sponsor_limit_for_gas_fee` 范围内，交易的燃料消耗将从合约的 `sponsor_balance_for_gas` 中支付（如果足够的话），而不是由交易发送者的账户余额支付，如果 `sponsor_balance_for_gas` 无法承担燃料消耗，则交易失败。否则，交易发送者应支付燃料费用。 
 + *For storage collateral*: If a transaction calls a contract with non-empty `sponsor_balance_for_collateral` and the sender is in the `whitelist` of the contract,  the collateral for storage incurred in the execution of the transaction is deducted from `sponsor_balance_for_collateral` of the contract, and the owner of those modified storage entries is set to the contract address accordingly. Otherwise, the sender should pay for the collateral for storage incurred in the execution.
 
 ### Sponsorship Update
