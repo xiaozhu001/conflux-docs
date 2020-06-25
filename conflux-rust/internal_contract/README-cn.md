@@ -123,7 +123,7 @@ you_contract.remove(white_list_addr).sendTransaction({
 
 引入 **AdminControl** 合约的目的是为了更好地维护其他智能合约，特别是那些没有适当销毁程序而临时生成的智能合约：它记录了每个用户建立的智能合约的管理员，并根据相应管理员的要求进行销毁处理。
 
-The default administrator of a smart contract is the creator of the contract, i.e. the sender α of the transaction that causes the creation of the contract. The current administrator of a smart contract can transfer its authority to another normal account by sending a request to the AdminControl contract. Contract accounts are not allowed to be the administrator of other contracts, since this mechanism is mainly for tentative maintenance. Any long term administration with customized authorization rules should be implemented inside the contract, i.e. as a specific function that handles destruction requests.
+智能合约的默认管理员是合约的创建者，即使合约创建的交易发送者α。智能合约的当前管理员可通过向AdminControl合约发送请求，将其权限转移给另一个普通账户。合约账户不允许成为其他合约的管理者，因为这种机制主要是用于试探性的维护。任何带有自定义授权规则的长期管理都应该在合约内部实现，如作为处理销毁请求的特定功能。
 
 At any time, the administrator `addr` of an existing contract has the right to request destruction of the contract by calling AdminControl. However, the request would be rejected if the collateral for storage of contract is not zero, or `addr` is not the current administrator of the contract. If `addr` is the current administrator of the contract and the collateral for storage of contract is zero, then the destruction request is accepted and
 processed as follows:
@@ -133,7 +133,7 @@ processed as follows:
 4. the internal state in the contract will be released and the corresponding collateral for storage refunded to owners;
 5. the contract is deleted from world-state.
 
-### The Interfaces
+### 接口
 
 The contract address is `0x8060de9e1568e69811c4a398f92c3d10949dc891`. The abi for the internal contract could be found [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/AdminControl.json) and [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/AdminControl.sol).
 
