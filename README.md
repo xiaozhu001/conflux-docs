@@ -122,7 +122,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 #### 1、 api.md API参考文档
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md
 
-中文地址：
+中文地址：https://zh-hans.developer.conflux-chain.org/docs/js-conflux-sdk/javascript_sdk
 
 #### 2、 README.md 文档介绍
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/README.md
