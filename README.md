@@ -118,6 +118,11 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：
 
+#### 7、 conflux-docs/conflux-rust/accounts/cfxkey/README-cn.md cfxkey介绍（6月25日完成翻译）
+English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxkey/README.md
+
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/accounts/cfxkey/README-cn.md
+
 ## 三、js-conflux-sdk
 #### 1、 api.md API参考文档
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md
