@@ -26,7 +26,7 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 有两类资源可以被赞助：燃料费用及存储抵押物。
 
 + *对于燃料费用*: 如果一笔交易使用非空的 `sponsor_for_gas` 调用智能合约且交易发送者处于合约的 `whitelist` 列表内，且交易指定的燃料费用在 `sponsor_limit_for_gas_fee` 范围内，交易的燃料消耗将从合约的 `sponsor_balance_for_gas` 中支付（如果足够的话），而不是由交易发送者的账户余额支付，如果 `sponsor_balance_for_gas` 无法承担燃料消耗，则交易失败。否则，交易发送者应支付燃料费用。 
-+ *For storage collateral*: If a transaction calls a contract with non-empty `sponsor_balance_for_collateral` and the sender is in the `whitelist` of the contract,  the collateral for storage incurred in the execution of the transaction is deducted from `sponsor_balance_for_collateral` of the contract, and the owner of those modified storage entries is set to the contract address accordingly. Otherwise, the sender should pay for the collateral for storage incurred in the execution.
++ *对于存储抵押物*: 如果一笔交易使用非空的 `sponsor_balance_for_collateral` 调用智能合约且交易发送者处于合约的 `whitelist` 列表内，在执行交易的过程中存储抵押物将从智能合约的 `sponsor_balance_for_collateral` 中扣除，并将这些修改后的存储条目所有者相应设置为合约地址。 否则，交易发送方应在执行过程中支付存储抵押物。
 
 ### Sponsorship Update
 
