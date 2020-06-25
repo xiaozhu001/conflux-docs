@@ -32,9 +32,9 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 
 可以通过调用SponsorControl合同来更新燃料赞助费用和抵押担保物。要替换合约中的 `sponsor_for_gas` ，新的赞助人应当向合约转移比当前合约 `sponsor_balance_for_gas` 更多的资金，并为 `sponsor_limit_for_gas_fee` 设定一个新值。除非原有的 `sponsor_limit_for_gas_fee` 无法负担赞助，否则， `sponsor_limit_for_gas_fee` 的新值应不低于原有赞助者设置的限额。而且，转入的资金应当是新限额的1000倍及以上，这样至少可以补贴 `1000` 个调用C的交易。 如满足上述条件，则剩余的 `sponsor_balance_for_gas` 将退还给之前的赞助账户 `sponsor_for_gas` ，随后根据新赞助商的规范更新 `sponsor_balance_for_gas` ， `sponsor_balance_for_gas` ，及 `sponsor_limit_for_gas_fee` 。
 
-The replacement of `sponsor_for_collateral` is similar except that there is no analog of the limit for gas fee. The new sponsor should transfer to C a fund more than the fund provided by the current sponsor for collateral of the contract. Then the current `sponsor_for_collateral` will be fully refunded, i.e. the sum of `sponsor_balance_for_collateral` and the total collateral for storage used by the contract, and both collateral sponsorship fields are changed as the new sponsor’s request accordingly. A contract account is also allowed to be a sponsor.
+对 `sponsor_for_collateral` 赞助的替换操作非常类似，只是没有类似于燃料费用的限制。新的赞助人应当向C转入比现有赞助人提供的资金更多的资金作为合约的抵押担保物。那么当前赞助人 `sponsor_for_collateral` 的担保物将被全额退还，如 `sponsor_balance_for_collateral` 与合约使用的抵押担保总额之和，此外两个抵押担保字段均按照新赞助人的要求进行相应的变更。一个合约账户允许成为赞助人。
 
-### The Interfaces
+### 接口
 
 The built-in contract address is `0x8ad036480160591706c831f0da19d1a424e39469`. The abi for the internal contract could be found [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/SponsorWhitelistControl.json) and [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/SponsorWhitelistControl.sol).
 
