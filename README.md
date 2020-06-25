@@ -98,10 +98,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：
 
-#### 3、 accounts/cfxstore/README.md （密钥管理）文档介绍
+#### 3、 accounts/cfxstore/README.md （密钥管理）文档介绍（6月25日完成翻译）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxstore/README.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/accounts/cfxstore/README-cn.md
 
 #### 4、 internal_contract/README.md （内部合约）文档介绍（6月25日完成翻译）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
