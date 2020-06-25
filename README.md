@@ -93,10 +93,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/README-cn.md
 
-#### 2、 CHANGELOG.md 变更记录
+#### 2、 CHANGELOG.md 变更记录（6月25日尚未完成）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/CHANGELOG.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/CHANGELOG-cn.md
 
 #### 3、 accounts/cfxstore/README.md （密钥管理）文档介绍（6月25日完成翻译）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxstore/README.md
