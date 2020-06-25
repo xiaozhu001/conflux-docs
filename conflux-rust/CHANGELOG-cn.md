@@ -29,14 +29,11 @@
 
 - 改进stratum协议，使其更符合常规情况。现在，stratum协议可以正确的与外部矿工协同工作。
 
-- Separate `deposit_list` and `vote_stake_list` from `Account` and adjust the gas cost for `withdraw`, `deposit`, `vote_lock` internal contract call. Now, the gas cost for there three functions is related with the length of `deposit_list` or `vote_stake_list`.
+- 将 `deposit_list` 与 `vote_stake_list` 从 `Account` 中分离出来，并调整 `withdraw`, `deposit`, `vote_lock` 内部合约调用的燃料开销。现在这三个函数的燃料开销与 `deposit_list` 或 `vote_stake_list` 的长度有关。
 
-- Disable transaction index persistence by default. This will reduce the disk usage 
-for miners. If you want to reliably serve transaction-related RPCs, you should 
-set `persist_tx_index=true` in the configuration file manually.
+- 在默认情况下，禁用交易索引持久性。这可以降低矿工的磁盘使用量。如果你想可靠地服务于与交易相关的RPC，你应手工在配置文件内设置 `persist_tx_index=true` 。
 
-- A new RPC ctx_getBlockRewardInfo to query block reward information inside a 
-given epoch.
+- 一个新的RPC ctx_getBlockRewardInfo用于在给定纪元内查询一个区块奖励信息。
 
 - Compute transaction root and receipts root by a simple MPT where the key is
 the index in big endian bytes representation of fixed length with leading zero
