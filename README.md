@@ -106,7 +106,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 #### 4、 internal_contract/README.md （内部合约）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
 
-中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-rust/internal_contract
+中文地址：
 
 #### 5、 core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/README.md （snappy）文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/core/benchmark/storage/parity-snappy/rust-snappy/snappy-sys/snappy/README.md
