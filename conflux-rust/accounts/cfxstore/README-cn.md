@@ -274,10 +274,10 @@ OK
 #### `change-vault-pwd <vault> <old-pwd> <new-pwd> [--dir DIR]`
 *修改Vault对应的口令*
 
-- `<vault>` - name of existing vault
-- `<old-pwd>` - old vault password, file path
-- `<new-pwd>` - new vault password, file path
-- `[--dir DIR]` - secret store directory, It may be either parity, parity-test, geth, geth-test or a path. default: parity
+- `<vault>` - 已有vault的名字
+- `<old-pwd>` - 原vault口令，文件路径
+- `<new-pwd>` - 新vault口令，文件路径
+- `[--dir DIR]` - 私钥的存放路径，可以是parity、 parity-test、geth、geth-test或是一个路径。默认为parity
 
 ```
 cfxstore change-vault-pwd vault3 vault3_password.txt new_vault3_password.txt
@@ -290,14 +290,14 @@ OK
 --
 
 #### `move-to-vault <address> <vault> <password> [--dir DIR] [--vault VAULT] [--vault-pwd VAULTPWD]`
-*Move account to vault from another vault/root directory.*
+*将账户从另一个vault/root路径移入一个vault*
 
-- `<address>` - conflux address, 20 bytes long
-- `<vault>` - name of existing vault to move account to
-- `<password>` - password of existing `<vault>` to move account to, file path
-- `[--dir DIR]` - secret store directory, It may be either parity, parity-test, geth, geth-test or a path. default: parity
-- `[--vault VAULT]` - current vault of the `<address>` argument, if set
-- `[--vault-pwd VAULTPWD]` - password for the current vault of the `<address>` argument, if any. file path
+- `<address>` - conflux地址，20字节长
+- `<vault>` - 将账户移入已有的vault对应的名字
+- `<password>` - 将账户移入的已有 `<vault>` 的口令，文件路径
+- `[--dir DIR]` - 私钥的存放路径，可以是parity、 parity-test、geth、geth-test或是一个路径。默认为parity
+- `[--vault VAULT]` - `<address>` 参数（如果该参数被设置）的对应vault
+- `[--vault-pwd VAULTPWD]` - `<address>` 参数当前对应vault的口令（如果有）。文件路径
 
 
 ```
@@ -313,12 +313,12 @@ OK
 --
 
 #### `move-from-vault <address> <vault> <password> [--dir DIR]`
-*Move account to root directory from given vault.*
+*将账户从给定的vault移至根目录*
 
-- `<address>` - conflux address, 20 bytes long
-- `<vault>` - name of existing vault to move account to
-- `<password>` - password of existing `<vault>` to move account to, file path
-- `[--dir DIR]` - secret store directory, It may be either parity, parity-test, geth, geth-test or a path. default: parity
+- `<address>` - conflux地址，20字节长
+- `<vault>` - 将账户移入已有的vault对应的名字
+- `<password>` - 将账户移入的已有 `<vault>` 的口令，文件路径
+- `[--dir DIR]` - 私钥的存放路径，可以是parity、 parity-test、geth、geth-test或是一个路径。默认为parity
 
 
 ```
