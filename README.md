@@ -2,10 +2,10 @@
 
 ## 一、conflux-portal
 
-#### 1、 README.md  项目介绍
+#### 1、 README.md  项目介绍（6月25日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/README.md
 
-中文地址： 
+中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/README-cn.md
 #### 2、 CHANGELOG.md 变更记录
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/CHANGELOG.md
 
