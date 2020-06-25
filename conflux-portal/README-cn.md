@@ -29,8 +29,7 @@ ConfluxPortal支持火狐，谷歌Chrome浏览器以及基于Chromium开发的�
         - 您还需要勾选"Use custom (local) server"复选框
           在远程DevTools的设置中，使用默认服务器配置（主机 `localhost` ，端口 `8000` ，安全连接复选框取消勾选）
 
-Uncompressed builds can be found in `/dist`, compressed builds can be found in
-`/builds` once they're built.
+未经压缩处理的生成内容可以在 `/dist` 内找到，经过压缩处理的生成内容可以在 `/builds` 内找到。
 
 ## 贡献
 
