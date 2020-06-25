@@ -88,7 +88,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 
 ## 二、conflux-rust
-#### 1、 README.md 文档介绍
+#### 1、 README.md 文档介绍（6月25日完成翻译）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/README-cn.md
@@ -103,7 +103,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：
 
-#### 4、 internal_contract/README.md （内部合约）文档介绍
+#### 4、 internal_contract/README.md （内部合约）文档介绍（6月25日完成翻译）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/internal_contract/README-cn.md
