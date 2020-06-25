@@ -36,7 +36,7 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 
 ### 接口
 
-内建的合约地址为 `0x8ad036480160591706c831f0da19d1a424e39469`. 内部合约的abi可以在 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/SponsorWhitelistControl.json) 以及 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/SponsorWhitelistControl.sol)找到。
+内建的合约地址为 `0x8ad036480160591706c831f0da19d1a424e39469` 。 内部合约的abi可以在 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/SponsorWhitelistControl.json)以及 [这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/SponsorWhitelistControl.sol)获取。
 
 + `set_sponsor_for_gas(address contract, uint upper_bound)` ：如果有人希望向合约地址 `contract` 赞助燃料费用， 他/她（也可以是合约账户）可以在调用该函数的同时向地址 `0x8ad036480160591706c831f0da19d1a424e39469` 传输代币。 参数 `upper_bound` 是指赞助者为单笔交易支付的燃料费用上限。 传输的代币量至少为参数 `upper_bound` 的1000倍。赞助者可能会被赞助更多代币同时设置更高的上界参数的赞助者所替换。当前赞助者也可以调用该函数并向该合约传输更多代币。在当前赞助者账户余额小于参数 `upper_bound` 时 ， `upper_bound` 值将被动态调低。
 + `set_sponsor_for_collateral(address contract_addr)`： 如果有人希望向地址为 `contract` 的合约赞助担保金，他/她（也可以是合约账户）可以在调用该函数的同时向地址 `0x8ad036480160591706c831f0da19d1a424e39469`传输代币。赞助者可能会被传输更多代币的新赞助者替换而当前赞助者也可通过调用该函数向合约传输更多代币。
@@ -125,24 +125,24 @@ you_contract.remove(white_list_addr).sendTransaction({
 
 智能合约的默认管理员是合约的创建者，即使合约创建的交易发送者α。智能合约的当前管理员可通过向AdminControl合约发送请求，将其权限转移给另一个普通账户。合约账户不允许成为其他合约的管理者，因为这种机制主要是用于试探性的维护。任何带有自定义授权规则的长期管理都应该在合约内部实现，如作为处理销毁请求的特定功能。
 
-在任何时候，现有合同的管理人`addr` 都有权通过调用AdminControl申请销毁合约。但是，如果用于存储合同的抵押品不为零，或 `addr` 不是合约的当前管理者，则该请求将被拒绝。如果 `addr` 是合约的当前管理者，且合约中的存储抵押品为零，则销毁请求会被接受，且处理流程如下：
-1. the balance of the contract will be refunded to `addr`;
-2. the `sponsor_balance_for_gas` of the contract will be refunded to `sponsor_for_gas`;
-3. the `sponsor_balance_for_collateral` of the contract will be refunded to `sponsor_for_collateral`;
-4. the internal state in the contract will be released and the corresponding collateral for storage refunded to owners;
-5. the contract is deleted from world-state.
+在任何时候，现有合同的管理人`addr` 都有权通过调用AdminControl申请销毁合约。但是，如果用于存储合同的抵押物不为零，或 `addr` 不是合约的当前管理者，则该请求将被拒绝。如果 `addr` 是合约的当前管理者，且合约中的存储抵押品为零，则销毁请求会被接受，且处理流程如下：
+1. 合约余额将退还给 `addr` ；
+2. 合约中的 `sponsor_balance_for_gas` 会退还给 `sponsor_for_gas` ；
+3. 合约中的 `sponsor_balance_for_collateral` 会退还给 `sponsor_for_collateral` ；
+4. 合约的内部状态将被解除，并将相应的抵押物退还给拥有者；
+5. 该合约从世界范围内删除。
 
 ### 接口
 
-The contract address is `0x8060de9e1568e69811c4a398f92c3d10949dc891`. The abi for the internal contract could be found [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/AdminControl.json) and [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/AdminControl.sol).
+合约地址为 `0x8060de9e1568e69811c4a398f92c3d10949dc891`。 内部合约的abi可以在[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/AdminControl.json)以及[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/AdminControl.sol)获取。
 
-+ `set_admin(address contract, address admin)`: Set the administrator of contract `contract` to `admin`. The caller should be the administrator of `contract` and it should be a normal account. Caller should make sure that `contract` should be an address of a contract and `admin` should be a normal account address. Otherwise, the call will fail.
++ `set_admin(address contract, address admin)`： 设置 `admin` 为合约 `contract` 的管理员。函数调用者应为合约 `contract` 的管理员且账号状态正常。调用者要确保 `contract` 字段确实写入了合约地址且 `admin` 字段是正常的账户地址。否则，调用失败。
 
-+ `destroy(address contract)`: Perform a suicide of the contract `contract`. The caller should be the administrator of `contract` and it should be a normal account. If the collateral for storage of the contract is not zero, the suicide will fail. Otherwise, the `balance` of `contract` will be refunded to the current administrator, the `sponsor_balance_for_gas` will be refunded to `sponsor_for_gas`, the `sponsor_balance_for_collateral` will be refunded to `sponsor_for_collateral`.
++ `destroy(address contract)`： 销毁合约 `contract` 。函数调用者应为合约 `contract` 的管理员且账号状态正常。 若合约抵押担保非0，则销毁合约失败.否则，合约 `contract`  的`balance` 退还给现任管理者处。 `sponsor_balance_for_gas` 将会退还到 `sponsor_for_gas` ， `sponsor_balance_for_collateral` 则会退还到 `sponsor_for_collateral` 。
 
-### Examples
+### 样例
 
-Consider you have deployed a contract whose address is `contract_addr`. The administrator can call `AdminControl.set_admin(contract_addr, new_admin)` to change the administrator and call `AdminControl.destroy(contract_addr)` to kill the contract. 
+考虑到您已经部署了一个合约，其地址为 `contract_addr` 。管理员可以调用 `AdminControl.set_admin(contract_addr, new_admin)` 以修改管理员，及调用 `AdminControl.destroy(contract_addr)` 以销毁合约。 
 
 ```javascript
 const PRIVATE_KEY = '0xxxxxxx';
@@ -159,18 +159,18 @@ const admin_contract = cfx.Contract({
   abi: require('./contracts/admin.abi.json'),
   address: admin_contract_addr,
 });
-// to change administrator
+// 修改管理员
 admin_contract.set_admin(contract_addr, new_admin).sendTransaction({
   from: account,
 }).confirmed();
 
-// to kill the contract
+// 销毁智能合约
 admin_contract.destroy(contract_addr).sendTransaction({
   from: account,
 }).confirmed();
 ```
 
-## Staking Mechanism
+## 权益质押机制
 
 Conflux introduces the staking mechanism for two reasons: first, staking mechanism provides a better way to charge the occupation of storage space (comparing to “pay once, occupy forever”); and second, this mechanism also helps in defining the voting power in decentralized governance.
 
