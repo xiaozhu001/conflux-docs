@@ -125,8 +125,7 @@ you_contract.remove(white_list_addr).sendTransaction({
 
 智能合约的默认管理员是合约的创建者，即使合约创建的交易发送者α。智能合约的当前管理员可通过向AdminControl合约发送请求，将其权限转移给另一个普通账户。合约账户不允许成为其他合约的管理者，因为这种机制主要是用于试探性的维护。任何带有自定义授权规则的长期管理都应该在合约内部实现，如作为处理销毁请求的特定功能。
 
-At any time, the administrator `addr` of an existing contract has the right to request destruction of the contract by calling AdminControl. However, the request would be rejected if the collateral for storage of contract is not zero, or `addr` is not the current administrator of the contract. If `addr` is the current administrator of the contract and the collateral for storage of contract is zero, then the destruction request is accepted and
-processed as follows:
+在任何时候，现有合同的管理人`addr` 都有权通过调用AdminControl申请销毁合约。但是，如果用于存储合同的抵押品不为零，或 `addr` 不是合约的当前管理者，则该请求将被拒绝。如果 `addr` 是合约的当前管理者，且合约中的存储抵押品为零，则销毁请求会被接受，且处理流程如下：
 1. the balance of the contract will be refunded to `addr`;
 2. the `sponsor_balance_for_gas` of the contract will be refunded to `sponsor_for_gas`;
 3. the `sponsor_balance_for_collateral` of the contract will be refunded to `sponsor_for_collateral`;
