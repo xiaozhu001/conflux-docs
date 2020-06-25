@@ -45,7 +45,7 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 
 当调用函数时的交易值 `set_sponsor_for_gas` 及 `set_sponsor_for_collateral` 代表发送者（新赞助者）愿意支付的代币数量。每个合约通过调用 `add_privilege` 及 `remove_privilege` 来维护它的白名单列表 `whitelist` 。
 
-### 例子
+### 样例
 
 假设有一个如下所示的简单合约。
 ```solidity
@@ -172,35 +172,36 @@ admin_contract.destroy(contract_addr).sendTransaction({
 
 ## 权益质押机制
 
-Conflux introduces the staking mechanism for two reasons: first, staking mechanism provides a better way to charge the occupation of storage space (comparing to “pay once, occupy forever”); and second, this mechanism also helps in defining the voting power in decentralized governance.
+Conflux引入权益质押机制的原因有两个：一、权益机制提供了一种对占用存储空间更好的收费方式（相比于“一次付费，永久占用”）。二、该机制还有助于定义分散治理中的投票权。
 
-At a high level, Conflux implements a built-in **Staking** contract to record the staking information of all accounts. By sending a transaction to this contract, users (both external users and smart contracts) can deposit/withdraw funds, which is also called stakes in the contract. The interest of staked funds is issued at withdrawal, and depends on both the amount and staking period of the fund being withdrawn
+在高层，Conflux实现了一个内置的**Staking** 合约，记录所有账户的权益信息。通过向该合约发送交易，用户（包括外部用户和智能合约）可以存入/提取资金，也被称为合约内的权益。质押资金的利息在提款时发放，其数量取决于提款金额和质押时长。
 
-### Interest Rate
+### 利率
 
-The staking interest rate is currently set to 4% per year. Compound interest is implemented in the granularity of blocks.
+目前的年化利率为4%。
+复利是以区块的颗粒度来实现的。
 
-When executing a transaction sent by account `addr` at block `B` to withdraw a fund of value `v` deposited at block `B'`, the interest is calculated as follows:
+执行由账户 `addr` 在区块 `B` 发送的交易，并在区块 `B'` 提取价值 `v` 的资金，其利息计算公式如下：
 
 ```
 interest issued = v * (4% / 63072000)^T
 ```
 
-where `T = BlockNo(B)−BlockNo(B')` is the staking period measured by number of blocks, and `63072000` is the expected number of blocks generated in `365` days with the target block time `0.5` seconds. 
+其中 `T = BlockNo(B)−BlockNo(B')` 是以区块数目衡量的质押时长，而 `63072000` 是在区块生成时间为 `0.5` 秒前提下 `365` 天生成区块数目的期望值。
 
-### Staking for Voting Power
+### 质押以获取投票权益
 
-See the details in [Conflux Protocol Specification](https://confluxnetwork.org/developer/).
+详细请看[Conflux Protocol Specification](https://confluxnetwork.org/developer/).
 
-### The Interfaces
+### 接口
 
-The contract address is `0x843c409373ffd5c0bec1dddb7bec830856757b65`. The abi for the internal contract could be found [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/Staking.json) and [here](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/Staking.sol).
+合约地址为 `0x843c409373ffd5c0bec1dddb7bec830856757b65`。内部合约的abi信息可以在[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/metadata/Staking.json)以及[这里](https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/contracts/Staking.sol)获取。
 
-+ `deposit(uint amount)`: The caller can call this function to deposit some tokens to Conflux Internal Staking Contract. The current annual interest rate is 4%.
-+ `withdraw(uint amount)`: The caller can call this function to withdraw some tokens to Conflux Internal Staking Contract. It will trigger a interest settlement. The staking capital and staking interest will be transferred to the user's balance in time. All the withdrawal applications will be processed on a first-come-first-served basis according to the sequence of staking orders.
-+ `vote_lock(uint amount, uint unlock_block_number)`: This function is related with Voting Rights in Conflux. Staking users can choose the voting amount and locking maturity by locking a certain amount of CFX in a certain maturity from staking. The `unlock_block_number` is measured in the number of blocks since genesis block.
++ `deposit(uint amount)` ：调用者可以通过调用该函数将部分代币存入Conflux内嵌的权益质押合约。目前的年化利率为4%。
++ `withdraw(uint amount)` ： 调用者可通过调用该函数从Conflux内嵌的权益质押合约中提取代币。运行该函数将会触发利息结算。权益质押资金和利息将会按先申请先服务的顺序及时转入到用户账户中。
++ `vote_lock(uint amount, uint unlock_block_number)` ：该函数与Conflux的投票权益相关。权益质押用户可以通过选择投票数额及锁定的到期日锁定一定数目的CFX费用。参数 `unlock_block_number` 会以创世区块产生以来的区块数目度量。
 
-### Examples
+### 样例
 
 ```javascript
 const PRIVATE_KEY = '0xxxxxxx';
