@@ -191,7 +191,7 @@ true
 --
 
 #### `recover <address> <known-phrase>`
-*尝试恢复给定预期地址和部分恢复短语（太短或有无效词）的账户。*
+*尝试恢复给定预期地址和部分恢复短语（太短或存在无效词）的账户。*
 
 - `<address>` - conflux地址，20字节长
 - `<known-phrase>` - 已知的恢复短语，形式可以是 `thwarting * creamer`
