@@ -17,7 +17,7 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 
 **SponsorControl** 智能合约为每个用户建立的合约维护以下信息:
 + `sponsor_for_gas`: 为提供燃料费用补贴的账户；
-+ `sponsor_for_collateral`: 为存放抵押提供补贴的账户；
++ `sponsor_for_collateral`: 为提供存放抵押补贴的账户；
 + `sponsor_balance_for_gas`: 可用于燃料费用补贴的余额；
 + `sponsor_balance_for_collateral`: 可用于存放抵押补贴的余额；
 + `sponsor_limit_for_gas_fee`: 赞助者愿意为每笔交易提供的资助上限；
@@ -26,14 +26,11 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 有两类资源可以被赞助：燃料费用及存储抵押物。
 
 + *对于燃料费用*: 如果一笔交易使用非空的 `sponsor_for_gas` 调用智能合约且交易发送者处于合约的 `whitelist` 列表内，且交易指定的燃料费用在 `sponsor_limit_for_gas_fee` 范围内，交易的燃料消耗将从合约的 `sponsor_balance_for_gas` 中支付（如果足够的话），而不是由交易发送者的账户余额支付，如果 `sponsor_balance_for_gas` 无法承担燃料消耗，则交易失败。否则，交易发送者应支付燃料费用。 
-+ *对于存储抵押物*: 如果一笔交易使用非空的 `sponsor_balance_for_collateral` 调用智能合约且交易发送者处于合约的 `whitelist` 列表内，在执行交易的过程中存储抵押物将从智能合约的 `sponsor_balance_for_collateral` 中扣除，并将这些修改后的存储条目所有者相应设置为合约地址。 否则，交易发送方应在执行过程中支付存储抵押物。
++ *对于存储抵押物*: 如果一笔交易使用非空的 `sponsor_balance_for_collateral` 调用智能合约且交易发送者处于合约的 `whitelist` 列表内，在执行交易的过程中抵押担保物将从智能合约的 `sponsor_balance_for_collateral` 中扣除，并将这些修改后的存储条目所有者相应设置为合约地址。 否则，交易发送方应在执行过程中支付抵押担保物。
 
-### Sponsorship Update
+### 赞助更新
 
-Both sponsorship for gas and for collateral can be updated by calling the SponsorControl contract. The current sponsors can call this contract to transfer funds to increase the sponsor balances directly, and the current sponsor for gas is also allowed to increase the `sponsor_limit_for_gas_fee` without transferring new funds. Other normal accounts can replace the current sponsors by calling this contract and providing more funds for sponsorship.
-
-To replace the `sponsor_for_gas` of a contract, the new sponsor should transfer to the contract a fund more than the current `sponsor_balance_for_gas` of the contract and set a new value for `sponsor_limit_for_gas_fee`. The new value of `sponsor_limit_for_gas_fee` should be no less than the old sponsor’s limit unless the old `sponsor_limit_for_gas_fee` cannot afford the old limit. Moreover, the transferred fund should be >= 1000 times of the new limit, so that it is sufficient to subsidize at least `1000` transactions calling C. If the above conditions are satisfied, the remaining `sponsor_balance_for_gas` will be refunded to the old `sponsor_for_gas`, and then `sponsor_balance_for_gas`, `sponsor_for_gas` and `sponsor_limit_for_gas_fee` will be updated according to the new sponsor’s
-specification.
+可以通过调用SponsorControl合同来更新燃料赞助费用和抵押担保物。要替换合约中的 `sponsor_for_gas` ，新的赞助人应当向合约转移比当前合约 `sponsor_balance_for_gas` 更多的资金，并为 `sponsor_limit_for_gas_fee` 设定一个新值。除非原有的 `sponsor_limit_for_gas_fee` 无法负担赞助，否则， `sponsor_limit_for_gas_fee` 的新值应不低于原有赞助者设置的限额。而且，转入的资金应当是新限额的1000倍及以上，这样至少可以补贴 `1000` 个调用C的交易。 如满足上述条件，则剩余的 `sponsor_balance_for_gas` 将退还给之前的赞助账户 `sponsor_for_gas` ，随后根据新赞助商的规范更新 `sponsor_balance_for_gas` ， `sponsor_balance_for_gas` ，及 `sponsor_limit_for_gas_fee` 。
 
 The replacement of `sponsor_for_collateral` is similar except that there is no analog of the limit for gas fee. The new sponsor should transfer to C a fund more than the fund provided by the current sponsor for collateral of the contract. Then the current `sponsor_for_collateral` will be fully refunded, i.e. the sum of `sponsor_balance_for_collateral` and the total collateral for storage used by the contract, and both collateral sponsorship fields are changed as the new sponsor’s request accordingly. A contract account is also allowed to be a sponsor.
 
