@@ -47,7 +47,7 @@ Conflux实现了一种赞助机制以补贴用户使用智能合约。因此，�
 
 ### 例子
 
-Suppose you have a simple contract like this.
+假设有一个如下所示的简单合约。
 ```solidity
 pragma solidity >=0.4.15;
 
@@ -81,7 +81,7 @@ contract CommissionPrivilegeTest {
 }
 ```
 
-After deploying the contract and the address is `contract_addr`, if someone wants to sponsor the gas consumption, he/she can send a transaction like below:
+部署合约后，地址为 `contract_addr` ，如果有人希望赞助燃料费用，他/她可以发送如下交易：
 ```javascript
 const PRIVATE_KEY = '0xxxxxxx';
 const cfx = new Conflux({
@@ -103,9 +103,9 @@ sponsor_contract.set_sponsor_for_gas(contract_addr, your_upper_bound).sendTransa
 }).confirmed();
 ```
 
-As for sponsor the storage collateral, you can simply replace the function `set_sponsor_for_gas(contract_addr, your_upper_bound)` to `set_sponsor_for_collateral(contract_addr)`.
+至于赞助者的存储抵押物，只需要更换 `set_sponsor_for_gas(contract_addr, your_upper_bound)` 函数为 `set_sponsor_for_collateral(contract_addr)` 函数并使用。
 
-After that you can maintain the `whitelist` for your contract using `add_privilege` and `remove_privilege`. The special address `0x0000000000000000000000000000000000000000` with all zeros means everyone is in the `whitelist`. You need to use it carefully.
+通过使用 `add_privilege` 和 `remove_privilege` 为合约维护白名单 `whitelist` 。含有全0的特殊地址 `0x0000000000000000000000000000000000000000` 意味着任何人都在 `whitelist` 内。 需要谨慎的使用它。
 
 ```javascript
 you_contract.add(white_list_addr).sendTransaction({
@@ -117,11 +117,11 @@ you_contract.remove(white_list_addr).sendTransaction({
 })
 ```
 
-After that the accounts in `whiltelist` will pay nothing while calling `you_contract.foo()` or `you_contract.par_add(1, 10)`.
+在这一操作后，在调用 `you_contract.foo()` 或 `you_contract.par_add(1, 10)` 时存在于 `whiltelist` 内的账户将不再支付任何费用。
 
-## Admin Management
+## 管理
 
-The **AdminControl** contract is introduced for better maintenance of other smart contracts, espeically which are generated tentatively without a proper destruction routine: it records the administrator of every user-established smart contract and handles the destruction on request of corresponding administrators.
+引入 **AdminControl** 合约的目的是为了更好地维护其他智能合约，特别是那些没有适当销毁程序而临时生成的智能合约：它记录了每个用户建立的智能合约的管理员，并根据相应管理员的要求进行销毁处理。
 
 The default administrator of a smart contract is the creator of the contract, i.e. the sender α of the transaction that causes the creation of the contract. The current administrator of a smart contract can transfer its authority to another normal account by sending a request to the AdminControl contract. Contract accounts are not allowed to be the administrator of other contracts, since this mechanism is mainly for tentative maintenance. Any long term administration with customized authorization rules should be implemented inside the contract, i.e. as a specific function that handles destruction requests.
 
