@@ -1,14 +1,14 @@
-# MetaMask Philosophy
+# MetaMask的理念
 
-## Mission
+## 使命
 
-Making it safe and easy for the most people to use the decentralized web to the greatest degree that is empowering to them.
+让更多的人安全、便捷地使用去中心化网络，最大程度地为他们赋予权力。
 
-## Vision
+## 愿景
 
-To realize the highest goals achievable for the human race with the twin powers of peer to peer networks and cryptography. To empower users to hold and use their own keys on these new networks as securely and intelligibly as possible, enabling a new world of peer to peer agreements and economies, in hopes that we may collectively overcome the many great problems that we face together, through the power of strong cooperation.
+利用点对点网络和密码学的双重力量，实现人类可以实现的最高目标。使用户有能力在这些新的网络上尽可能安全和智能地持有和使用自己的密钥，促成一个新的点对点协议和经济世界，希望我们能够通过强有力的合作力量，共同克服共同面临的许多重大问题。
 
-## Strategy
+## 策略
 
-We provide software for users to manage accounts, for sites to easily propose actions to users, and for users to coherently review actions before approving them. We build on this rapidly evolving set of protocols with the goal of empowering the most people to the greatest degree, and aspire to continuously evolve our offering to pursue that goal.
+我们为用户提供管理其账户的软件，为网站提供了方便他们向用户提出行动建议的软件，和让用户在批准前对行动进行一致性审查的软件。我们在这套快速发展的协议基础上，以最大程度赋予大多数人权力为目标，并渴望不断发展我们的产品以追求这一目标。
 
