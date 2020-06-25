@@ -11,10 +11,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址： 
 
-#### 3、 MISSION.md  使命
+#### 3、 MISSION.md  使命（6月25日已完成）
 English link address ： https://github.com/Conflux-Chain/conflux-portal/blob/develop/MISSION.md
 
-中文地址： 
+中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/MISSION-cn.md
 
 #### 4、 docs/README.md  文档介绍
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/README.md
