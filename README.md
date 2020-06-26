@@ -16,10 +16,10 @@ English link address ： https://github.com/Conflux-Chain/conflux-portal/blob/de
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/MISSION-cn.md
 
-#### 4、 docs/README.md  文档介绍
+#### 4、 docs/README.md  文档介绍 （6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/README.md
 
-中文地址： 
+中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/README-cn.md
 
 #### 5、 docs/publishing.md 出版指南
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/publishing.md
@@ -31,12 +31,12 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：
 
-#### 7、 docs/add-to-chrome.md 添加至Chrome浏览器
+#### 7、 docs/add-to-chrome.md 添加至Chrome浏览器（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-chrome.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/add-to-chrome-cn.md
 
-#### 8、 docs/add-to-firefox.md 添加至火狐浏览器
+#### 8、 docs/add-to-firefox.md 添加至火狐浏览器（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-firefox.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/add-to-firefox-cn.md
@@ -51,7 +51,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：
 
-#### 11、 docs/secret-preferences.md 私密偏好
+#### 11、 docs/secret-preferences.md 私密偏好（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/secret-preferences.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/secret-preferences-cn.md
