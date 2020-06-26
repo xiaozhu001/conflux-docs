@@ -1,84 +1,58 @@
-# Publishing Guide
+# 发布指南
 
-When publishing a new version of ConfluxPortal, we follow this procedure:
+当发布ConfluxPortal的新版本时，我们按照如下步骤进行：
 
-## Overview
+## 概述
 
-The below diagram outlines our process for design, development, and release.
-Building ConfluxPortal is a community affair, and many steps of the process
-invite participation from external contributors as indicated. All QA, code
-review, and release of new versions is done by members of the core ConfluxPortal
-team.
+下图对我们的设计、开发和发布流程进行了详细的概述。
+构建ConfluxPortal是一项社区的工作，该工作流程中的许多步骤都邀请了外部贡献者的参与。所有的QA工作、代码审查及发布新的版本是由ConfluxPortal的核心团队成员完成的。
 
 <img width="664" alt="mm-dev-process"
 src="https://user-images.githubusercontent.com/1016190/56308059-36906000-60fb-11e9-8e61-6655bca0c54f.png">
 
 
-## Preparation
+## 参与
 
-We try to ensure certain criteria are met before deploying:
+我们需要确保在部署前，满足一定的标准：
 
-- Deploy early in the week, to give time for emergency responses to unforeseen
-  bugs.
-- Deploy early in the day, for the same reason.
-- Make sure at least one member of the support team is "on duty" to watch for
-  new user issues coming through the support system.
-- Roll out incrementally when possible, to a small number of users first, and
-  gradually to more users.
+- 在一周的早些时候进行部署，为紧急应对难以预见的漏洞缺陷赢得时间。
+- 在一天中的早些时候进行部署，原因同上。
+- 确保支持团队内至少有一名成员保持“当值”状态，以便通过支持系统获取用户新遇到或发现的问题。
+- 在可能的情况下，采用增量推广的方案：先向少量用户推送，随后逐步向更多的用户推送。
 
-## Incrementing Version & Changelog
+## 递增版本 & 变更日志
 
-Version can be automatically incremented by creating a branch with the name
-`Version-vX.Y.Z`, where `X`, `Y`, and `Z` are numbers. Branches should be
-created off of the main branch. [Branches can be created on
-GitHub.](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository)
+通过使用名字 `Version-vX.Y.Z` 创建分支可以实现版本的自动递增，其中 `X`， `Y`，以及 `Z` 都是数字。分支应当从主分支的基础上创建。[可以在GitHub上创建分支](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository)
 
-Once a version branch has been created, a build on CircleCI will create a Pull
-Request for the release with the app manifest and changelog versions bumped.
+一旦创建了一个版本分支，在CircleCI上的构建将会针对该版本创建一个Pull Request并对应用清单和变更日志版本进行变更。
 
-## Preparing for Sensitive Changes
+## 为较为敏感的变动做准备
 
-In the case that a new release has sensitive changes that cannot be fully
-verified prior to publication, please follow the [sensitive release
-protocol](./sensitive-release.md).
+如果新的发行版本存在较为敏感的变化，在发布前无法完全核实，请遵循[敏感发行协议](./sensitive-release-cn.md).
 
-## Building
+## 构建
 
-While we develop on the main `develop` branch, our production version is
-maintained on the `master` branch.
+当我们在 `develop` 分支上进行开发时，我们的生产版本则会在 `master` 分支上进行维护。
 
-With each pull request, the @ConfluxBot will comment with a build of that new
-pull request, so after bumping the version on `develop`, open a pull request
-against `master`, and once the pull request is reviewed and merged, you can
-download those builds for publication.
+对于每一次的Pull request请求，@ConfluxBot都会针对这个新的Pull request请求进行构建和评论，所以在 `develop` 分支上更新版本后，可以针对 `master` 分支开启一个Pull request请求，一旦该请求被审查与合并，你就可以下载这些新的构建以便进行发布。
 
-## Publishing
+## 发布
 
-1. Publish to chrome store.
-2. Visit [the chrome developer
-   dashboard](https://chrome.google.com/webstore/developer/dashboard?authuser=2).
-3. Publish to [firefox addon
-   marketplace](http://addons.mozilla.org/en-us/firefox/addon/ether-metamask).
-4. Publish to [Opera
-   store](https://addons.opera.com/en/extensions/details/metamask/).
-5. Post on [Github
-   releases](https://github.com/Conflux-Chain/conflux-portal/releases) page.
-6. Run the `yarn announce` script, and post that announcement in our public
-   places.
+1. 发布到Chrome商店。
+2. 访问[Chrome开发者仪表盘](https://chrome.google.com/webstore/developer/dashboard?authuser=2)。
+3. 发布到[Firefox附加组件中心](http://addons.mozilla.org/en-us/firefox/addon/ether-metamask)。
+4. 发布到[Opera商店](https://addons.opera.com/en/extensions/details/metamask/)。
+5. 发布到[Github](https://github.com/Conflux-Chain/conflux-portal/releases) 页面。
+6. 运行 `yarn announce` 脚本，并在公开场合发布这一公告。
 
-## Hotfix Differences
+## 修补程序差异
 
-Our `develop` branch is usually not yet fully tested for quality assurance, and
-so should be treated as if it is in an unstable state.
+我们的 `develop` 分支通常还没有进行完整的测试以确保质量，所以我们会认为他依然还处于不稳定的状态。
 
-For this reason, when an urgent change is needed in production, its pull request
-should:
+因此，当在生产环境中需要进行紧急修改时，其Pull request请求应：
 
-- Describe it as a hotfix.
-- Use a hotfix tag.
-- Should be proposed against the `master` branch.
+- 把它描述为一个热修复补丁。Describe it as a hotfix.
+- 使用热修复补丁标记。
+- 应针对 `master` 分支进行提交。
 
-The version and changelog bump should then be made off the `master` branch, and
-then merged to `develop` to bring the two branches back into sync. Further time
-can be saved by incorporating the version/changelog bump into the PR against
-`master`, since we rely on @ConfluxBot to run tests before merging.
+此外，版本和变更日志应当从 `master` 分支上进行修改，并在随后合并到 `develop` 分支以使得两个分支恢复同步的状态。通过将版本/变更日志放入针对 `master` 分支的Pull Request请求内，可以进一步节省时间，因为我们会依靠@ConfluxBot的帮助在合并前运行测试。
