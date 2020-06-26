@@ -22,7 +22,7 @@ src="https://user-images.githubusercontent.com/1016190/56308059-36906000-60fb-11
 
 ## 递增版本 & 变更日志
 
-通过使用名字 `Version-vX.Y.Z` 创建分支可以实现版本的自动递增，其中 `X`， `Y`，以及 `Z` 都是数字。分支应当从主分支的基础上创建。[可以在GitHub上创建分支](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository)
+通过使用命名规范 `Version-vX.Y.Z` 创建分支可以实现版本的自动递增，其中 `X`， `Y`，以及 `Z` 都是数字。分支应当从主分支的基础上创建。[可以在GitHub上创建分支](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository)
 
 一旦创建了一个版本分支，在CircleCI上的构建将会针对该版本创建一个Pull Request并对应用清单和变更日志版本进行变更。
 
