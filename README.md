@@ -54,7 +54,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 #### 11、 docs/secret-preferences.md 私密偏好
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/secret-preferences.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/secret-preferences-cn.md
 
 #### 12、 docs/components/account-menu.md 账户菜单
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md
