@@ -46,10 +46,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：
 
-#### 10、 docs/translating-guide.md 翻译指导
+#### 10、 docs/translating-guide.md 翻译指导（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/translating-guide.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/translating-guide-cn.md
 
 #### 11、 docs/secret-preferences.md 私密偏好（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/secret-preferences.md
