@@ -21,10 +21,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/README-cn.md
 
-#### 5、 docs/publishing.md 出版指南
+#### 5、 docs/publishing.md 发行指南（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/publishing.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/publishing-cn.md
 
 #### 6、 docs/state_dump.md 状态转存
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/state_dump.md
