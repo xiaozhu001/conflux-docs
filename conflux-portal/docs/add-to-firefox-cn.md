@@ -6,9 +6,9 @@
 
 * 选择文件 `dist/firefox/manifest.json` 。
 
-* 您可以选择启用调试功能，点击 `Debug`，就会出现一个能够将Conflux-portal所有信息记录的控制台窗口。
+您可以选择启用调试功能，点击 `Debug`，就会出现一个能够将Conflux-portal所有信息记录的控制台窗口。
 
-* 如果在调试时遇到问题，请尝试连接到 `irc.mozilla.org` 站点上的IRC频道 `#webextensions` 。
+如果在调试时遇到问题，请尝试连接到 `irc.mozilla.org` 站点上的IRC频道 `#webextensions` 。
 
-* 对于后续其他的问题，可以使用StackOverfow的标签 `firefox-addons` 获取。
+对于后续其他的问题，可以使用StackOverfow的标签 `firefox-addons` 获取。
 
