@@ -39,7 +39,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 #### 8、 docs/add-to-firefox.md 添加至火狐浏览器
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-firefox.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/add-to-firefox-cn.md
 
 #### 9、 docs/sensitive-release.md 敏感释放协议
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/sensitive-release.md
