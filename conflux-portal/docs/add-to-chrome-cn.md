@@ -1,12 +1,12 @@
-## Add Custom Build to Chrome
+## 将自定义的扩展构建并添加到Chrome内
 
-* Open `Settings` > `Extensions`.
-* Check "Developer mode".
-* Alternatively, use the URL `chrome://extensions/` in your address bar
-* At the top, click `Load Unpacked Extension`.
-* Navigate to your `conflux-portal/dist/chrome` folder.
-* Click `Select`.
-* Change to your locale via `chrome://settings/languages`
-* Restart the browser and test the plugin in your locale
+* 打开 `设置` > `扩展程序`。
+* 检查"开发者模式"是否已打开。
+* 或者，在地址栏中输入URL `chrome://extensions/`。
+* 在顶部点击`加载已解压的扩展程序`。
+* 选取您存储的 `conflux-portal/dist/chrome` 文件夹。
+* 点击`选择文件夹`。
+* 通过访问 `chrome://settings/languages` 来改动你的本地语言。
+* 重启浏览器，并在您所在的区域对该扩展程序进行测试。
 
-You now have the plugin, and can click 'inspect views: background plugin' to view its dev console.
+您现在已经拥有了这个扩展，可以通过点击扩展页面中的'查看视图：背景页'来查看该扩展的开发控制台。
