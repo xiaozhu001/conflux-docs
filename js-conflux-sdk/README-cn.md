@@ -57,7 +57,7 @@ or
 
 ## 变更记录
 
-[查看](https://github.com/Conflux-Chain/js-conflux-sdk/tree/master/CHANGE_LOG.md)
+[查看](./CHANGE_LOG-cn.md)
 
 
 ## 样例
