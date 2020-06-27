@@ -8,7 +8,7 @@
 
 ## 使用方法
 
-[API文档](https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md)
+[API文档](https://zh-hans.developer.conflux-chain.org/docs/js-conflux-sdk/javascript_sdk)
 
 ### Nodejs
 ```javascript

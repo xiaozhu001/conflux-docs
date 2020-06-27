@@ -132,7 +132,7 @@ English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/mas
 #### 2、 README.md 文档介绍
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/README.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/js-conflux-sdk/README-cn.md
 
 #### 3、 CHANGE_LOG.md 变更记录
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/CHANGE_LOG.md
