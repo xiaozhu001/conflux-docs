@@ -1,15 +1,15 @@
-# change log
+# 变更记录
 
 ## v0.10.1
 
-* add format.bytes
+* 添加format.bytes特性
 
 ```
 format.bytes('abcd'); // <Buffer 61 62 63 64>
 format.bytes([0, 1, 2, 3]); // <Buffer 00 01 02 03>
 ```
 
-* add contract method & event type or signature indexes
+* 添加智能合约方法及&事件类型或签名索引
 
 ```
 // solidity
@@ -27,13 +27,13 @@ contract['0x227ffd52']('str'); // specify override method by signature
 
 ## v0.10.0-alpha
 
-* add `getStatus`
+* 添加 `getStatus` 函数
 
 ```
 cfx.getStatus()
 ```
 
-* remove `getRiskCoefficient` and replace with `getConfirmationRiskByHash`
+* 移除 `getRiskCoefficient` 并使用 `getConfirmationRiskByHash` 作为替代
 
 ```
 // old
@@ -43,13 +43,13 @@ cfx.getRiskCoefficient(epochNumber)
 cfx.getConfirmationRiskByHash(blockHash)
 ```
 
-* remove `getAccount` cause it's internal RPC.
+* 移除 `getAccount` ，因为它是内部RPC。
 
-* use `require` replace `import` to gen code.
+* 使用 `require` 替换 `import` 以生成代码。
 
 ## v0.9.2
 
-* add defaultStorageLimit and defaultChainId for Conflux
+* 为Conflux添加defaultStorageLimit和defaultChainId
 
 ```
 // old
@@ -71,9 +71,9 @@ const cfx = new Conflux({
 
 ## v0.9.1
 
-* abi implicitly converting string to number
+* abi隐式转换字符串为数字
 
-solidity method: `function add(uint,uint) public returns (uint);`
+solidity方法： `function add(uint,uint) public returns (uint);`
 
 ```
 // old
@@ -85,7 +85,7 @@ await contract.add(1, '2'); // good, converting string to number
 
 ## v0.9.0-beta
 
-* format nonce as JSBI.BigInt
+* 格式为JSBI.BigInt的nonce一次性随机数
 
 ```
 nonce = await cfx.getNextNonce(...)
@@ -97,7 +97,7 @@ nonce = await cfx.getNextNonce(...)
 JSBI.BigInt(100000)
 ```
 
-* format transaction fields
+* 格式化交易区域
 
 ```
 tx = await cfx.getTransactionByHash(txHash)
@@ -118,7 +118,7 @@ tx = await cfx.getTransactionByHash(txHash)
 }
 ```
 
-* unit return string
+* unit返回字符串
 
 ```
 // old
@@ -130,7 +130,7 @@ unit.fromCFXToGDrip(123) => "123000000000"
 unit.fromCFXToGDrip('0.1234567891') => "123456789.1"
 ```
 
-* contract fields "code" rename to "bytecode"
+* 将合约字段 "code" 重命名为 "bytecode"
 
 ```
 // old
@@ -140,7 +140,7 @@ cfx.Contract({code, abi, address})
 cfx.Contract({bytecode, abi, address})
 ```
 
-* abi decodeData and decodeLog return object
+* abi decodeData方法和decodeLog方法将返回对象
 
 ```
 result = contract.abi.decodeData('0x....')
