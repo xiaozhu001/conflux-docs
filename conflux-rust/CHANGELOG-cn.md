@@ -35,56 +35,50 @@
 
 - 一个新的RPC ctx_getBlockRewardInfo用于在给定纪元内查询一个区块奖励信息。
 
-- Compute transaction root and receipts root by a simple MPT where the key is
-the index in big endian bytes representation of fixed length with leading zero
-and the value is the bytes representation of the corresponding data, e.g.
-transaction hash for transaction root, Receipt rlp for block receipts root.
-The receipts root is the Merkle root of the simple MPT of block receipts roots.
+- 通过使用键为前导含0、固定长度的大尾字节索引，值为对应数据的字节，应用简单的MPT树计算交易根和收据根，例如，交易根的摘要值，收据rlp为块收据根，而收据根对应于块收据根所在MPT树的Merkle根。
 
-- Use raw bytes in blame vec hash calculation instead of rlp because each 
-element of the vec is fixed length H256.
+- 在blame vec摘要计算中使用原始字节而非rlp的原因是 每个vec元素的长度值固定位H256。
 
-- Add support for CHAINID, SELFBALANCE, BEGINSUB, JUMPSUB, RETURNSUB opcodes.
+- 增加对CHAINID, SELFBALANCE, BEGINSUB, JUMPSUB, RETURNSUB 操作码的支持。
 
-- NUMBER opcode in call_virtual() now returns the correct block number.
+- call_virtual()内的NUMBER操作码目前能够返回正确的区块号。
 
-- BLOCKHASH opcode now returns the last block hash (i.e., ``blockhash(block.number - 1)``) 
-or zero if not querying the last block hash.
+- BLOCKHASH操作码现在返回最后一个块的摘要值(如， ``blockhash(block.number - 1)``) 
+如果不是查询最后一个块的摘要值，则返回0。
 
-- Disable reentrancy of contract calling through other contracts. 
+- 禁止通过其他合约重复调用合约的情况。
 
-- Change the default value of `from_epoch` in RPC `cfx_getLogs` from "earliest" to "latest_checkpoint".
-Now if no `from_epoch` is specified, it will only return logs after the latest checkpoint.
+- 将RPC中的 `cfx_getLogs` 中 `from_epoch` 的默认值从"earliest" 改为 "latest_checkpoint"。如果没有指定 `from_epoch` ，它将只发挥最新检查点后的日志。
 
-- Improve archive and full node log filtering. Change `filter.to_epoch` default to `"latest_state"`. Limit `filter.block_hashes` to up to 128 items.
+- 改进存档及全节点日志文件过滤功能。将 `filter.to_epoch` 的缺省值设置为 `"latest_state"` 。 同时限制 `filter.block_hashes` 最多为128项。
 
 # 0.5.0
 
-## Improvements
+## 提升
 
-- Add fields in Receipt: gas_fee, gas_sponsored, storage_sponsored. Accumulate gas_used in Receipt, not gas_charged.
+- 在收据中增加字段：gas_fee, gas_sponsored, storage_sponsored。在收据内累计gas_used而不是gas_charged。
 
-- Delay block requests when we cannot process them to avoid wasting network bandwidth.
+- 当我们无法处理块请求时，会延迟对应请求，以避免浪费网络带宽。
 
-- Set block gas limit for Genesis block to 30_000_000.
+- 将创世区块的燃料限制值设置为30_000_000。
 
-- Define gas_used to be transaction gas limit for NotEnoughCash, the same as all other exceptions.
+- 定义gas_used为NotEnoughCash的交易燃料限制，与其他所有异常相同。
 
-- Add support for WebSockets in RPC.
+- 在RPC中增加对WebSockets的支持。
 
-- cfx_gasPrice will return a price with at least 1000000000, i.e. 1GDrip.
+- cfx_gasPrice将返回至少1000000000，即1GDrip。
 
-- Move getstatus RPC from test to common, and renamed with cfx_getStatus.
+- 将getstatus RPC从test移至common，并改名为cfx_getStatus。
 
-## Bug Fixes
+## 漏洞修复
 
-- Fix UnexpectedResponse from honest peers that causes peer demotion.
+- 修复从诚信伙伴处收到UnexpectedResponse，导致对方降级的问题。
 
-- Remove some untrue debug assert.
+- 移除部分非真的调试断言。
 
-- Forbidden CALLCODE and DELEGATECALL to internal contracts.
+- 禁止将CALLCODE和DELEGATECALL用于内部合约。
 
-- RPC now returns the correct rlp size of the block
+- RPC现在返回正确块对应的RLP大小。
 
 - Fix a race condition that may cause optimistic execution to panic.
 
