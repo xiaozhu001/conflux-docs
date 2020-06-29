@@ -93,7 +93,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/README-cn.md
 
-#### 2、 CHANGELOG.md 变更记录（6月25日尚未完成）
+#### 2、 CHANGELOG.md 变更记录（6月29日尚未完成）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/CHANGELOG.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/CHANGELOG-cn.md
@@ -124,7 +124,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/accounts/cfxkey/README-cn.md
 
 ## 三、js-conflux-sdk
-#### 1、 api.md API参考文档
+#### 1、 api.md API参考文档（`bounty任务已翻译过`）
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/js-conflux-sdk/javascript_sdk
@@ -170,7 +170,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 7、 docs/json-rpc.md json-rps方法
+#### 7、 docs/json-rpc.md json-rps方法（`bounty任务已翻译过`）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法
@@ -180,7 +180,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 9、 docs/get_started.md 启程
+#### 9、 docs/get_started.md 启程（`bounty任务已翻译过`）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/get_started
@@ -205,12 +205,12 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 14、 docs/send_transaction.md 发送交易
+#### 14、 docs/send_transaction.md 发送交易（`bounty任务已翻译过`）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/send_transaction.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/send_transaction
 
-#### 15、 docs/setup_independent_chain.md 设置独立的区块链
+#### 15、 docs/setup_independent_chain.md 设置独立的区块链（`bounty任务已翻译过`）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/setup_independent_chain.md
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/independent_chain
