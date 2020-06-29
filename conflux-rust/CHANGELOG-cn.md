@@ -80,25 +80,25 @@
 
 - RPC现在返回正确块对应的RLP大小。
 
-- Fix a race condition that may cause optimistic execution to panic.
+- 修复了一个可能引发乐观性执行陷入到恐慌状态的竞争条件。
 
-- Fill in correct block gas limit value for mining.
+- 填入正确的块燃料限制值以便进行挖矿。
 
-- Fix definitions and logics in transaction early execution error checking.
+- 修正交易早期执行错误检查中的定义和逻辑。
 
-- Use block_count - 1 in target difficulty calculation because it's the unbiased estimation of exponential distribution parameter (past mining power).
+- 使用block_count - 目标难度计算中的1，是因为它是指数分布参数（过去算力）的无偏估计。
 
-## Improvements
+## 提升
 
-- Add cfx_getConfirmationRiskByHash RPC to get confirmation risk by block hash.
+- 添加cfx_getConfirmationRiskByHash RPC，通过区块摘要值获取确认风险。
 
-- Add getTransactionsFromPool debug RPC to collect transactions in pool.
+- 添加getTransactionsFromPool调试RPC来收集池中的事务。
 
 # 0.4.0
 
-## Bug Fixes
+## 漏洞修复
 
-- Fix a potential crash bug in the transaction pool compoenent
+- 修正交易池组件中潜在的崩溃bug。
 
 - Stop marking OverlayAccount dirty on read access. This will influnce the state root. 
 
