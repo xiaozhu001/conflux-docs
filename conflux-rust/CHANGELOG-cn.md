@@ -100,92 +100,75 @@
 
 - 修正交易池组件中潜在的崩溃bug。
 
-- Stop marking OverlayAccount dirty on read access. This will influnce the state root. 
+- 在读取操作时，不再标记OverlayAccount为脏。该操作会影响状态根。
 
-- Do not mark OverlayAccount dirty in sub_balance 0 for non-existence account.
+- 对于不存在的账户，不要在sub_balance为0时标记OverlayAccount为脏。
 
-- Add missing transaction verifications for invalid block.
+- 为无效区块添加缺失的交易验证。
 
-## Improvements
+## 提升
 
-- Improve the transaction address check at RPC
+- 改进RPC的交易地址检查
 
-- Change the test net PoW to use double keccak
+- 将测试网PoW改为使用双keccak算法
 
-## EVM Updates
+## 针对EVM的更新
 
-- Decide the storage owner (who is responsible for storage collateral) at the beginning of the transaction. 
+- 在交易开始时，决定质押存储者（负责贮存抵押物）。
 
-- Only check the storage limit and balance for storage collateral at the end of EVM execution. 
+- 只在EVM执行结束时检查存储质押的存储限额和余额。
 
 # 0.3.2
 
-## Bug Fixes
+## 漏洞修复
 
-- Fix an issue that GetBlockHashesByEpoch containing blocks before checkpoint may cause the node to crash.
+- 修正了GetBlockHashesByEpoch包含检查点前的区块可能导致的节点崩溃问题。
 
-- Quick fix for possible duplicate block inserted into the consensus worker thread.
+- 快速修复可能插入到共识矿工线程中的重复块。
 
 # 0.3.0
 
-## Blockchain Core Updates (Not Backward Compatible)
+## 区块链核心更新（不向下兼容）
 
-- Changes the address scheme of Conflux. All normal address now start with 0x1.
-All smart contracts address now start with 0x8. Note that your private key will
-still work as long as you replace the first character in your hex address with
-``0x1``. For example, if your address is 0x7b5c..., after this update your
-address will change to 0x1b5c...
+- 更改Conflux的地址方案。所有正规地址现在都以0x1开始。所有合约地址现在都以0x8开始。需要注意的是您的只需要把十六进制地址中的第一个字符替换为 ``0x1`` 即可。 例如你的地址是0x7b5c......，在本次更新后将变为0x1b5c......。
 
-- Changes the state Merkle root calculation method. Merkle is calculated based
-on constructed raw keccak input byte string instead of serialized rlp; checks if
-compressed_path starts on the second nibble of a byte; makes sure that with the
-constructed keccak input string adversary cannot construct a compressed path to
-create a path Merkle of the same value as a node Merkle.
+- 改变状态Merkle根的计算方法。Merkle的计算方法是基于
+对在构造的原始keccak输入字节字符串上计算，而不是在经过序列化处理的rlp上计算；检查compressed_path是否从一个字节的第二个半字节（4bits）开始；确保即使拥有构造好的keccak输入字符串，敌手任然难以构造一个压缩路径以创建一个与节点Merkle值相同相同的路径Merkle值。
 
-- Each epoch now has a limit of executing 200 blocks. If there are more than
-200 blocks in an epoch. Only the last 200 blocks will be executed. This change
-is designed to battle DoS attacks about hiding and generating a lot of blocks
-suddenly.
+- 现在每个纪元有执行200个区块的限制。如果在纪元内超过200个区块时，只有最后200个区块会被执行。这一改动的目的是为了对抗隐藏和短时间内生成大量区块这类的拒绝服务攻击（DoS）。
 
-- Add storage_root support in Conflux MPT. Define storage root as the Merkle
-root computed on the account's storage subtree root node, ignoring the
-compressed path; 2) force the storage root node to existing by setting a
-StorageLayout value at the storage node. 
+- 在ConfluxMPT树内添加对storage_root的支持。将存储根定义为忽略压缩路径情况下在账户存储子树根节点上计算出的Merkle根。通过设置StorageLayout值强制存储根节点的存在。
 
-You need to use new SDK tools to connect with the main chain, otherwise your
-transaction will be rejected as invalid. 
+需要使用最新的SDK工具以连接主链，否则您的交易会由于无效而被拒绝。
 
-## EVM Updates
+## 针对EVM的更新
 
-- Change the gas used in SSTORE operation to 5000 gas, no matter the zero-ness
-is changed or not. And we no longer refund gas in releasing storage entry. 
+- 将SSTORE操作中使用的燃料改为5000，而不再管zero-ness
+是否改变。在存储条目释放时，也不在对燃料进行退回。 A
 
-## RPC/CLI Updates
+## 针对RPC/CLI的更新
 
-- Change the CLI interface subcommand from `debug` to `local`. Its
-functionality remains the same.
+- 将CLI接口子命令从 `debug` 转为 `local`。其功能性上保持不变。
 
-- Add a RPC cfx_getSkippedBlocksByEpoch to query skipped blocks of an epoch
+- 增加了cfx_getSkippedBlocksByEpoch这一RPC操作以查询每一纪元内跳过的区块。
 
-- Add a corresponding CLI interface to query skipped blocks via local RPC
+- 添加了一个可以使用本地RPC查询跳过区块的CLI接口。
 
-- Refactor RPC interface now most RPC takes HEX parameters and returns HEX
+- 重构RPC接口，目前大多数RPC接受HEX参数，并返回HEX参数。
 
-## Bug Fixes
+## 漏洞修复
 
-- Fix an issue that may cause the P2P layer to not propagate out-of-era blocks properly
+- 修复了一个可能导致P2P层不能正确传递过期区块的问题。
 
-- Fix an issue that Conflux RPC may return incorrect estimate.
+- 修复了Conflux RPC可能返回错误估计值的问题。
 
-- Fix an issue that virtual call RPC may fail if the caller does not have enough balance
+- 修复了如果调用者无足够余额，虚拟调用RPC可能失败的问题。
 
-- Fix an issue that failing to send a pending request can make a block not received.
+- 修复了发送待处理请求使区块无法收到的问题。
 
-- Fix an issue that not-graph-ready compact blocks are not fully received.
+- 修复了not-graph-ready致密区块不能完全接收的问题。
 
 
-## Improvements
+## 提升
 
-- Make the consensus layer to prioritize meaningful blocks first. It will
-improve the overall performance in facing of DoS attacks. It will also
-prioritize self-mined blocks as a desirable effect.
+- 使共识层优先考虑有意义的区块。这将提高其面对DoS攻击的整体性能。在理想情况下，还将优先考虑自采区块。
