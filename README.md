@@ -93,7 +93,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/README-cn.md
 
-#### 2、 CHANGELOG.md 变更记录（6月29日尚未完成）
+#### 2、 CHANGELOG.md 变更记录（`6月30日已完成，希望请专家审校`）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/CHANGELOG.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/CHANGELOG-cn.md
