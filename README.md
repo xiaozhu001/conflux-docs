@@ -56,10 +56,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/secret-preferences-cn.md
 
-#### 12、 docs/components/account-menu.md 账户菜单
+#### 12、 docs/components/account-menu.md 账户菜单（`7月2日已完成，并将内容从MetaMask调整为Conflux Portal`）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/components/account-menu-cn.md
 
 #### 13、 docs/creating-metrics-events.md 创建度量事件
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/creating-metrics-events.md
