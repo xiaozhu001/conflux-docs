@@ -1,15 +1,15 @@
-# How to take a State Dump
+# 如何进行状态转储
 
-Sometimes a UI bug is hard to reproduce, but we'd like to rapidly develop against the application state that caused the bug.
+有时候，用户UI界面的漏洞难以复现，但我们仍旧希望能够针对引发漏洞的应用状态进行快速开发以解决这类问题。
 
-In this case, a MetaMask developer will sometimes ask a user with a bug to perform a "state dump", so we can use some internal tools to reproduce and fix the bug.
+在这类情况下，MetaMask的开发人员有时会请求用户进行“状态转储”，这样我们就能够使用一些内部工具复现并修复该漏洞。
 
-To take a state dump, follow these steps:
+要进行状态转储，需要依照如下步骤：
 
-1. Get the MetaMask popup to the point where it shows the bug (the developer will probably specify exactly where).
-2. Right click on the extension popup UI, and in the menu, click "Inspect". This will open the developer tools.
-3. In case it isn't already selected, click the "Console" tab in the new Developer Tools window.
-4. In the console, type this command exactly: `logState()`. This should print a bunch of JSON text into your console.
-5. Copy that printed JSON text
-6. *Optional*: Anonymize that text if you'd like (you may change all instances of an account address to another valid account address, for example) We may automate the anonymization in the future.
-7. Send that JSON text to the developer, ideally pasting it in the issue regarding the bug.
+1. 让MetaMaskGet弹出至出现漏洞的地方（有些开发者可能会指定具体的位置）。
+2. 右击扩展，会弹出的UI界面，并在菜单中点击“审查弹出内容”。这回打开开发者工具。
+3. 如果还没有被选中，也可以在新的开发者工具窗口中点击“控制台”标签。
+4. 在控制台中正确键入该命令： `logState()` 。 该操作会将一组JSON文本打印到控制台内。
+5. 复制打印到控制台内的JSON文本。
+6. *可选操作*: 如果愿意，可以对该文本进行匿名化处理（例如，您可以将所有账户地址的实例修改为另一个有效的账户地址），我们也可能在未来引入自动匿名化处理特性。
+7. 将该JSON文本发送给开发人员。最好的方法是将其粘贴在与漏洞相关的问题（issue）中。
