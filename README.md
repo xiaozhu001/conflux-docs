@@ -26,10 +26,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/publishing-cn.md
 
-#### 6、 docs/state_dump.md 状态转存
+#### 6、 docs/state_dump.md 状态转储（7月2日已完成（`是MetaMask的文档，但Portal也带有该功能，也许可以改为Portal`））
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/state_dump.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/state_dump-cn.md
 
 #### 7、 docs/add-to-chrome.md 添加至Chrome浏览器（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-chrome.md
