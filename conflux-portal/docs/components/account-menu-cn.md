@@ -10,7 +10,7 @@ Portal账户菜单的形式为弹出式菜单，其中包含的选项有：
  
  可以看到下图用红色方框出勾勒出了对应的轮廓。
 
- ![账户菜单截图](./Screen_shot.png) 
+ ![账户菜单截图](https://user-gold-cdn.xitu.io/2020/7/2/1730d730fabcf653?w=357&h=600&f=png&s=43909) 
  
  上述截图对应的Conflux Portal版本为0.1.8。
  
