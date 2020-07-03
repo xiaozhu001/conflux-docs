@@ -61,10 +61,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/components/account-menu-cn.md
 
-#### 13、 docs/creating-metrics-events.md 创建度量事件
+#### 13、 docs/creating-metrics-events.md 创建度量事件（7月3日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/creating-metrics-events.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/creating-metrics-events-cn.md
 
 #### 14、 docs/porting_to_new_environment.md 移植到新环境
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/porting_to_new_environment.md

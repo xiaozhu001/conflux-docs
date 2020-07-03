@@ -1,6 +1,6 @@
 ## 创建度量事件
 
- 方法`metricsEvent` 会通过上下文向所有组件开放。该方法在 `conflux-portal/ui/app/helpers/higher-order-components/metametrics/metametrics.provider.js` 内完成。所有组件可以通过在代码内添加设置上下文属性类型调用它：
+ 方法 `metricsEvent` 会通过上下文向所有组件开放。该方法在 `conflux-portal/ui/app/helpers/higher-order-components/metametrics/metametrics.provider.js` 内完成。所有组件可以通过在代码内添加设置上下文属性类型调用它：
 
 ```
 static contextTypes = {
