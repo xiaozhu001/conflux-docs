@@ -1,50 +1,41 @@
-# Sensitive Release Protocol
+# 敏感发布协议
 
-In the case that a new change is so dramatic that it is hard to anticipate all
-of the potential side-effects, here is a protocol for rolling out these
-sensitive changes in a way that:
+由于新引入的变化可能非常剧烈以至于难以考虑所有潜在的副作用，因此在这里介绍了推出这类敏感变化的协议，其方式为：
 
-- Minimizes adverse impact on end users.
-- Maximizes our responsiveness to these changes.
+- 最大限度减少对终端用户的不利影响。
+- 最大限度提高我们对这些变化的响应能力。
 
-## Protocol Steps
+## 协议步骤
 
-1. Prepare a normal release.
-2. Prepare a rollback release.
-3. Roll the normal release out.
-4. In case of emergency, roll back.
+1. 准备正常发布版本。
+2. 准备一个用于回滚的版本。
+3. 释放正常发布版本。
+4. 在紧急情况下，进行回滚。
 
-### Normal Release
+### 正常发布
 
-Simply follow the steps in [the publishing guide](./publishing.md).
+只要按照 [发布指南](./publishing-cn.md)中的步骤操作即可。
 
-### Prepare Rollback Release
+### 准备回滚版本
 
-Follow the steps in [the publishing guide](./publishing.md) with a different
-context:
+在不同的上下文环境下按照 [发布指南](./publishing-cn.md)中的步骤操作。 
 
-Instead of creating a version branch off of the main branch, create a version
-branch off of the latest release. It is customary that this release increments
-the patch version number.
+相比于在主分支上创建一个版本分支，不如直接在最新版本上创建一个版本分支。按照惯例，该版本会递增补丁的版本号。
 
-### Roll the normal release out
+### 释放正常发布版本
 
-Ensure the rollback release has been built, and downloaded locally, fully ready
-to deploy with immediacy.
+确保回滚版本已经构建并下载到本地，为紧急的部署做好了完全的准备。
 
-For a sensitive release, initially roll out to only 1% of Chrome users (since
-Chrome allows incremental rollout).
+对于较为敏感的版本，最开始只向1%的Chrome用户推送（Chrome允许增量释放）。
 
-Monitor Sentry for any recognizable error logs.
+监控错误主动系统系统Sentry是否有任何可是别的错误日志。
 
-Gradually increase the rollout percentage.
+逐步提高推送比例。
 
-### In case of Emergency
+### 在紧急情况下
 
-If a problem is detected, publish the roll-back release to 100% of users,
-identify the issue, fix it, and repeat this process with a new release.
+如果发现问题，要将回滚版本发布给所有用户，对现有问题进行识别与修复，随后在新版释放中重复该步骤。
 
-## Summary
+## 摘要
 
-This protocol is a worst-case scenario, just a way to be incredibly careful
-about our most sensitive possible changes.
+该协议针对的是最糟糕的情况，是一种对敏感变化格外谨慎的方法。
