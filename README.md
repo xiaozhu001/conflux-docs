@@ -143,10 +143,10 @@ English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/mas
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/js-conflux-sdk/CHANGE_LOG-cn.md
 
 ## 四、conflux-doc 
-#### 1、 docs/cli.md 子命令
+#### 1、 docs/cli.md 子命令（7月3日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/cli.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/cli-cn.md
 
 #### 2、 docs/sync.md 同步
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/sync.md
