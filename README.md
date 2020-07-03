@@ -2,7 +2,7 @@
 
 ## 一、conflux-portal
 
-#### 1、 README.md  项目介绍（6月25日已完成）
+#### 1、 README.md  项目介绍（6月25日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/README.md
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/README-cn.md
@@ -12,47 +12,47 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址： 
 
-#### 3、 MISSION.md  使命（6月25日已完成）
+#### 3、 MISSION.md  使命（6月25日:white_check_mark:）
 English link address ： https://github.com/Conflux-Chain/conflux-portal/blob/develop/MISSION.md
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/MISSION-cn.md
 
-#### 4、 docs/README.md  文档介绍 （6月26日已完成）
+#### 4、 docs/README.md  文档介绍 （6月26日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/README.md
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/README-cn.md
 
-#### 5、 docs/publishing.md 发行指南（6月26日已完成）
+#### 5、 docs/publishing.md 发行指南（6月26日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/publishing.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/publishing-cn.md
 
-#### 6、 docs/state_dump.md 状态转储（7月2日已完成（`是MetaMask的文档，但Portal也带有该功能，也许可以改为Portal`））
+#### 6、 docs/state_dump.md 状态转储（7月2日:white_check_mark:（`是MetaMask的文档，但Portal也带有该功能，也许可以改为Portal`））
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/state_dump.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/state_dump-cn.md
 
-#### 7、 docs/add-to-chrome.md 添加至Chrome浏览器（6月26日已完成）
+#### 7、 docs/add-to-chrome.md 添加至Chrome浏览器（6月26日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-chrome.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/add-to-chrome-cn.md
 
-#### 8、 docs/add-to-firefox.md 添加至火狐浏览器（6月26日已完成）
+#### 8、 docs/add-to-firefox.md 添加至火狐浏览器（6月26日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/add-to-firefox.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/add-to-firefox-cn.md
 
-#### 9、 docs/sensitive-release.md 敏感释放协议（7月3日已完成）
+#### 9、 docs/sensitive-release.md 敏感释放协议（7月3日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/sensitive-release.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/sensitive-release-cn.md
 
-#### 10、 docs/translating-guide.md 翻译指导（6月26日已完成）
+#### 10、 docs/translating-guide.md 翻译指导（6月26日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/translating-guide.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/translating-guide-cn.md
 
-#### 11、 docs/secret-preferences.md 私密偏好（6月26日已完成）
+#### 11、 docs/secret-preferences.md 私密偏好（6月26日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/secret-preferences.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/secret-preferences-cn.md
@@ -63,7 +63,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 ~~中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/components/account-menu-cn.md~~
 
-#### 13、 docs/creating-metrics-events.md 创建度量事件（7月3日已完成）
+#### 13、 docs/creating-metrics-events.md 创建度量事件（7月3日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/creating-metrics-events.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/creating-metrics-events-cn.md
@@ -91,7 +91,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 
 ## 二、conflux-rust
-#### 1、 README.md 文档介绍（6月25日完成翻译）
+#### 1、 README.md 文档介绍（6月25日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/README-cn.md
@@ -101,12 +101,12 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/CHANGELOG-cn.md
 
-#### 3、 accounts/cfxstore/README.md （密钥管理）文档介绍（6月25日完成翻译）
+#### 3、 accounts/cfxstore/README.md （密钥管理）文档介绍（6月25日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxstore/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/accounts/cfxstore/README-cn.md
 
-#### 4、 internal_contract/README.md （内部合约）文档介绍（6月25日完成翻译）
+#### 4、 internal_contract/README.md （内部合约）文档介绍（6月25日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/internal_contract/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/internal_contract/README-cn.md
@@ -121,23 +121,23 @@ English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/maste
 
 中文地址：
 
-#### 7、 conflux-docs/conflux-rust/accounts/cfxkey/README-cn.md cfxkey介绍（6月25日完成翻译）
+#### 7、 conflux-docs/conflux-rust/accounts/cfxkey/README-cn.md cfxkey介绍（6月25日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-rust/blob/master/accounts/cfxkey/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-rust/accounts/cfxkey/README-cn.md
 
 ## 三、js-conflux-sdk
-#### 1、 api.md API参考文档（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md
+#### ~~1、 api.md API参考文档（`bounty任务已翻译过`）~~
+~~English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/api.md~~
 
-中文地址：https://zh-hans.developer.conflux-chain.org/docs/js-conflux-sdk/javascript_sdk
+~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/js-conflux-sdk/javascript_sdk~~
 
-#### 2、 README.md 文档介绍（6月27日已完成）
+#### 2、 README.md 文档介绍（6月27日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/README.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/js-conflux-sdk/README-cn.md
 
-#### 3、 CHANGE_LOG.md 变更记录（6月27日已完成）
+#### 3、 CHANGE_LOG.md 变更记录（6月27日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/js-conflux-sdk/blob/master/CHANGE_LOG.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/js-conflux-sdk/CHANGE_LOG-cn.md
@@ -208,15 +208,15 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 14、 docs/send_transaction.md 发送交易（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/send_transaction.md
+#### ~~14、 docs/send_transaction.md 发送交易（`bounty任务已翻译过`）~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/send_transaction.md~~
 
-中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/send_transaction
+~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/send_transaction~~
 
-#### 15、 docs/setup_independent_chain.md 设置独立的区块链（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/setup_independent_chain.md
+#### ~~15、 docs/setup_independent_chain.md 设置独立的区块链（`bounty任务已翻译过`）~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/setup_independent_chain.md~~
 
-中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/independent_chain
+~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/independent_chain~~
 
 ## ~~五、go-conflux-sdk~~
 
