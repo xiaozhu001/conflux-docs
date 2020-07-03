@@ -193,10 +193,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 ~~中文地址：~~
 
-#### 11、 docs/key_management.md 密钥管理
+#### 11、 docs/key_management.md 密钥管理（7月3日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/key_management.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/key_management-cn.md
 
 #### 12、 docs/test_framework.md 测试框架
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/test_framework.md
