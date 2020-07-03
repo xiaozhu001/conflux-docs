@@ -41,10 +41,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/add-to-firefox-cn.md
 
-#### 9、 docs/sensitive-release.md 敏感释放协议
+#### 9、 docs/sensitive-release.md 敏感释放协议（7月3日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/sensitive-release.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/sensitive-release-cn.md
 
 #### 10、 docs/translating-guide.md 翻译指导（6月26日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/translating-guide.md
