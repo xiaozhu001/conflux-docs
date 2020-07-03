@@ -1,31 +1,30 @@
-# Conflux Design Document
-In this document, we describe the architecture and organization of Conflux software stack and its design rationale.
-The following figure shows the overview of the Conflux full node stack.
-![Full Stack](img/full-stack.png)
-It consists of several key components.
+# Conflux设计文档
+在本文档中，我们描述了Conflux软件栈的架构和组织结构及其对应的设计原理。下图展示了Conflux全节点栈的概况。
+![全栈](img/full-stack.png)
+由几个关键部分组成。
 
-* Peer-to-Peer Layer
-* Synchronization Graph
-* Consensus Graph
-* Storage Layer
-* Transaction Pool
-* Block Generator
+* 点对点层
+* 同步图
+* 共识层
+* 存储层
+* 交易池
+* 区块生成器
 
-Generally speaking, the peer-to-peer layer takes charge of disseminating blocks and transactions among the nodes in the entire network where each node maintains several inbound/outbound connections to its peers. 
-Each node also maintains an in-memory synchronization graph data structure. When a new block is received from a peer or generated locally, the block will be first inserted into the synchronization graph where it goes through some basic validation which does not require graph-wise information. 
-At the time when a block enters the synchronization graph, its past-set blocks may not already entered.
-The synchronization graph monitors the block and puts it into the consensus graph once all its past-set blocks enters the synchronization graph. 
-When a block enters the consensus graph, its past-set blocks should all already entered this graph. 
-Then the consensus algorithm will be conducted based on this newly arrived block to adjust the total order of blocks accordingly. The consensus graph component executes the newly arrived block and updates the account states in the storage layer. 
+一般来讲，点对点层负责在整个网络节点之间传播区块和交易，每个节点与其对等节点保持若干个入站/出站连接。
+每个节点同时维护一个内存中的同步图数据结构。当对等节点收到一个区块或在本地生成一个新区块时，该区块将首先被插入到同步图并在其中进行一些基本的验证，这类验证不需要图相关的信息。
+当一个区块进入同步图时，其过去设置的块可能还没有进入。
+同步图负责监控区块，并在所有过去设置的区块进入同步图后，将其放入到共识图内。
+当区块进入共识图时，其过去设置的区块也应当进入该图。
+随后针对新到达区块执行共识算法以相应调整区块的总体顺序。共识图组件执行新到达的区块，并更新存储层内的账户状态。
 
-Each node maintains a transaction pool that holds the to-be-packed transactions and relays the transactions to its peers that may need them. 
-The block generator component drives the mining efforts, picks transactions from the pool, and packs them into the newly generated block.
+每个节点都维护着一个交易池，该交易池保持着待打包的交易，并将交易转发至可能需要它们的对等节点处。
+区块生成器组件驱动挖矿工作，从交易池内选取交易并将其打包到新生成的区块中。
 
-This document is organized as in the following sections.
+本文件分为以下几节:
 
-* [Consensus Mechanism](consensus.md)
-* [Block Synchronization Process](sync.md)
-* [Transaction Relay](trans.md)
+* [共识机制](consensus-cn.md)
+* [区块同步过程](sync-cn.md)
+* [交易中继](trans-cn.md)
 
 
 
