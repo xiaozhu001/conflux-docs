@@ -6,6 +6,7 @@
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/README.md
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/README-cn.md
+
 #### 2、 CHANGELOG.md 变更记录
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/CHANGELOG.md
 
@@ -56,10 +57,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/secret-preferences-cn.md
 
-#### 12、 docs/components/account-menu.md 账户菜单（`7月2日已完成，并将内容从MetaMask调整为Conflux Portal`）
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md
+#### ~~12、 docs/components/account-menu.md 账户菜单（`7月2日已完成，并将内容从MetaMask调整为Conflux Portal`）
+English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md~~
 
-中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/components/account-menu-cn.md
+~~中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/components/account-menu-cn.md~~
 
 #### 13、 docs/creating-metrics-events.md 创建度量事件（7月3日已完成）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/creating-metrics-events.md
@@ -76,15 +77,15 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：
 
-#### 16、 test/e2e/fixtures/README.md （端到端测试）文档介绍
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/test/e2e/fixtures/README.md
+#### ~~16、 test/e2e/fixtures/README.md （端到端测试）文档介绍
+English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/test/e2e/fixtures/README.md~~
 
-中文地址：
+~~中文地址：~~
 
-#### 17、 app/scripts/controllers/transactions/README.md （交易控制器）文档介绍
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/app/scripts/controllers/transactions/README.md
+#### ~~17、 app/scripts/controllers/transactions/README.md （交易控制器）文档介绍~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/app/scripts/controllers/transactions/README.md~~
 
-中文地址：
+~~中文地址：~~
 
 
 ## 二、conflux-rust
@@ -160,35 +161,35 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 5、 docs/install.md 安装
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/install.md
+#### ~~5、 docs/install.md 安装
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/install.md~~
 
-中文地址：
+~~中文地址：~~
 
 #### 6、 docs/stratum.md Stratum协议介绍
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/stratum.md
 
 中文地址：
 
-#### 7、 docs/json-rpc.md json-rps方法（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md
+#### ~~7、 docs/json-rpc.md json-rps方法（`bounty任务已翻译过`）
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md~~
 
-中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法
+~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法~~
 
 #### 8、 docs/consensus.md 共识
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/consensus.md
 
 中文地址：
 
-#### 9、 docs/get_started.md 启程（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md
+#### ~~9、 docs/get_started.md 启程（`bounty任务已翻译过`）
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md~~
 
-中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/get_started
+~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/get_started~~
 
-#### 10、docs/javascript-api.md JavaScript API介绍
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/javascript-api.md
+#### ~~10、docs/javascript-api.md JavaScript API介绍
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/javascript-api.md~~
 
-中文地址：
+~~中文地址：~~
 
 #### 11、 docs/key_management.md 密钥管理
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/key_management.md
@@ -215,14 +216,14 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/independent_chain
 
-## 五、go-conflux-sdk
+## ~~五、go-conflux-sdk~~
 
-#### 1、 api.md API参考
-English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/api.md
+#### ~~1、 api.md API参考
+English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/api.md~~
 
-中文地址：
+~~中文地址：~~
 
-#### 2、 README.md 文档介绍
-English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/README.md
+#### ~~2、 README.md 文档介绍~~
+~~English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/README.md~~
 
-中文地址：
+~~中文地址：~~
