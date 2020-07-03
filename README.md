@@ -158,10 +158,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### 4、  docs/design.md 设计
+#### 4、  docs/design.md 设计（7月3日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/design.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/design-cn.md
 
 #### ~~5、 docs/install.md 安装~~
 ~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/install.md~~
