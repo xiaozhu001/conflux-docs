@@ -57,8 +57,9 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/secret-preferences-cn.md
 
-#### ~~12、 docs/components/account-menu.md 账户菜单（`7月2日已完成，并将内容从MetaMask调整为Conflux Portal`）
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md~~
+#### ~~12、 docs/components/account-menu.md 账户菜单（`7月2日已完成，并将内容从MetaMask调整为Conflux Portal`）~~
+
+~~English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/components/account-menu.md~~
 
 ~~中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/components/account-menu-cn.md~~
 
@@ -77,8 +78,9 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：
 
-#### ~~16、 test/e2e/fixtures/README.md （端到端测试）文档介绍
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/test/e2e/fixtures/README.md~~
+#### ~~16、 test/e2e/fixtures/README.md （端到端测试）文档介绍~~
+
+~~English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/test/e2e/fixtures/README.md~~
 
 ~~中文地址：~~
 
