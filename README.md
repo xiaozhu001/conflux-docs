@@ -161,8 +161,8 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### ~~5、 docs/install.md 安装
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/install.md~~
+#### ~~5、 docs/install.md 安装~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/install.md~~
 
 ~~中文地址：~~
 
@@ -171,8 +171,8 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### ~~7、 docs/json-rpc.md json-rps方法（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md~~
+#### ~~7、 docs/json-rpc.md json-rps方法（`bounty任务已翻译过`）~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md~~
 
 ~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法~~
 
@@ -181,13 +181,13 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：
 
-#### ~~9、 docs/get_started.md 启程（`bounty任务已翻译过`）
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md~~
+#### ~~9、 docs/get_started.md 启程（`bounty任务已翻译过`）~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md~~
 
 ~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/get_started~~
 
-#### ~~10、docs/javascript-api.md JavaScript API介绍
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/javascript-api.md~~
+#### ~~10、docs/javascript-api.md JavaScript API介绍~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/javascript-api.md~~
 
 ~~中文地址：~~
 
@@ -218,8 +218,8 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 ## ~~五、go-conflux-sdk~~
 
-#### ~~1、 api.md API参考
-English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/api.md~~
+#### ~~1、 api.md API参考~~
+~~English link address ：https://github.com/Conflux-Chain/go-conflux-sdk-for-wallet/blob/master/api.md~~
 
 ~~中文地址：~~
 
