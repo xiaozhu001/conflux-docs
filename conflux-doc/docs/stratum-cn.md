@@ -22,7 +22,7 @@ Rust是一块能够开发诸如Conflux等分布式系统的优秀语言，但对
 
 ## RPC接口
 
-### 服务端RPCs
+### 服务端RPC
 
 #### mining.subscribe
 开始订阅来自Stratum服务器的工作量证明通知。
