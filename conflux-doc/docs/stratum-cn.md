@@ -1,24 +1,14 @@
-# Stratum Protocol in Conflux-Rust
+# Conflux-Rust中的Stratum协议
 
-## Design Goal
+## 设计目标
 
-Rust is an excellent language to develop distributed systems like Conflux, but
-it is not very so good for developing miners. Miners are typically developed
-via languages like C/C++ that can operate with high performance and GPUs. We
-therefore design a stratum-like protocol in Conflux-Rust to enable external
-miners to connect to Conflux.
+Rust是一块能够开发诸如Conflux等分布式系统的优秀语言，但对于具备开发能力的矿工来说并不友好，大部分矿工通常都会使用C/C++这类性能高且能够与GPU进行交互的语言进行开发。因此，在Conflux-Rust中设计了一个类Stratum的协议，以帮助外部矿工连接到Conflux。
 
-Note that to keep the protocol simple, the design goal of the stratum-like
-protocol is for solo-mining only, i.e., Conflux-Rust are connected with miner
-processes in local or remote machines that belong to the same entity. It is not
-designed to run as a mining pool server. For those who wish to run a mining
-pool, it is recommended to build their own customized proxy server that
-connects to Conflux-Rust.
+需要注意的是，为使协议简洁，类Stratum协议的仅设计适用于自挖矿，如，Conflux-Rust只与属于相同实体的矿工本地或远程机器上的进程建立连接。没有被设计成矿池服务器的形式。 对于那些希望运行矿池的用户，推荐构建能够连接到Conflux-Rust且属于矿工自己的定制代理服务器。
 
-## General Workflow
+## 通用工作流程
 
-In the scenario where an external miner connecting to Conflux-Rust via its
-stratum port (default 32525), here is the typical workflow.
+一般情况下，一个外部矿工会通过Stratum端口（默认32525）连接到Conflux-Rust，下面列出了通用的工作流程。
 
 1. The miner connects via TCP to the stratum port. Conflux-Rust must run with
 the configuration that enables stratum.

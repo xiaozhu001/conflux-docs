@@ -169,7 +169,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 ~~中文地址：~~
 
 #### 6、 docs/stratum.md Stratum协议介绍
-English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/stratum.md
+English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/stratum.md~~
 
 中文地址：
 
