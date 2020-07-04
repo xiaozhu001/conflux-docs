@@ -11,11 +11,7 @@ ConfluxPortal已经持续开发了近一年时间。我们也在逐渐发现一�
 当访问新站点时，WebExtension会在页面上下文中创建一个可以在`app/scripts/contentscript.js` 中看到的新 `ContentScript` 。该脚本表示每页的设置过程：为每个页面创建 `web3` 应用程序接口，并通过端口API(封装在[stream abstraction](https://github.com/substack/stream-handbook)中)
 与后端脚本建立连接，并在任意加载前注入到DOM中。
 
-You can choose to use this streaming interface to connect to the ConfluxPortal
-controller over any transport you can wrap with a stream, by connecting it to
-the
-[confluxportal-inpage-provider](https://github.com/yqrashawn/conflux-portal-inpage-provider#readme),
-but you can also construct a provider per domain like this:
+你可以选择使用该流接口连接ConfluxPortal控制器，通过连接[confluxportal-inpage-provider](https://github.com/yqrashawn/conflux-portal-inpage-provider#readme)可以在流中包裹任何传输内容。但你也可以像这样为每个域构建一个提供商：
 
 ```javascript
 const providerFromEngine = require('@yqrashawn/cfx-json-rpc-middleware/providerFromEngine')
@@ -30,8 +26,7 @@ function incomingConnection (domain, getSiteMetadata) {
 }
 ```
 
-Please note if you take this approach, you are responsible for cleaning up the
-filters when the page is closed:
+请注意如果采取这种方式，你需要负责在页面关闭时清空过滤器：
 
 ```
 const filterMiddleware = engine._middleware.filter(mid => mid.name === 'filterMiddleware')[0]
@@ -40,20 +35,16 @@ filterMiddleware.destroy()
 
 ### getSiteMetadata()
 
-This method is used to enhance our confirmation screens with images and text
-representing the requesting domain.
+该方法用于使用代表请求域的图像和文本信息增强我们的确认屏幕。
 
-It should return a promise that resolves with an object with the following
-properties:
+这应该返回一个用对象解析的承诺，且该对象具有如下属性：
 
-- `name`: The requesting site's name.
-- `icon`: A URI representing the site's logo.
+- `name`：请求的站点名；
+- `icon`：代表站点标志的URI。
 
-### Using the Streams Interface
+### 使用流接口
 
-Only use this if you intend to construct the
-[confluxportal-inpage-provider](https://github.com/yqrashawn/conflux-portal-inpage-provider#readme)
-over a stream!
+只有当你打算构建[confluxportal-inpage-provider](https://github.com/yqrashawn/conflux-portal-inpage-provider#readme)时才使用它。
 
 The most confusing part about porting ConfluxPortal to a new platform is the way
 we provide the
