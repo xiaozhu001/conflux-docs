@@ -1,27 +1,15 @@
-# Guide to Porting ConfluxPortal to a New Environment
+# 移植ConfluxPortal到新环境的指引
 
-ConfluxPortal has been under continuous development for nearly one year now,
-and we’ve gradually discovered some useful abstractions that have allowed us to
-grow more easily. A couple of those layers together allow ConfluxPortal to be
-ported to new environments and contexts increasingly easily (although it still
-could be easier, and please let us know if you get stuck!)
+ConfluxPortal已经持续开发了近一年时间。我们也在逐渐发现一些有用的抽象允许我们更容易的成长。这几层结合起来，可以让ConfluxPortal越来越容易移植到新的环境和语境中（尽管它可以更容易，如果您卡住了，请联系我们！）。
 
-Before we get started, it's worth becoming familiar with our basic architecture:
+在我们开始之前，我们的基本架构是值得熟悉的。
 
 ![ConfluxPortal-architecture-diagram](./architecture.png)
 
-The `ConfluxPortal-background` describes the file at
-`app/scripts/background.js`, which is the web extension singleton. This context
-instantiates an instance of the `ConfluxPortal Controller`, which represents the
-user's accounts, a connection to the blockchain, and the interaction with new
-Dapps.
+`ConfluxPortal-background` 描述了位于 `app/scripts/background.js` 的Web扩展单例文件，该上下文实例化了一个 `ConfluxPortal Controller` 实例，代表用户的账户，与区块链的连接以及与新Dapp的交互。
 
-When a new site is visited, the WebExtension creates a new `ContentScript` in
-that page's context, which can be seen at `app/scripts/contentscript.js`. This
-script represents a per-page setup process, which creates the per-page `web3`
-api, connects it to the background script via the Port API (wrapped in a [stream
-abstraction](https://github.com/substack/stream-handbook)), and injected into
-the DOM before anything loads.
+当访问新站点时，WebExtension会在页面上下文中创建一个可以在`app/scripts/contentscript.js` 中看到的新 `ContentScript` 。该脚本表示每页的设置过程：为每个页面创建 `web3` 应用程序接口，并通过端口API(封装在[stream abstraction](https://github.com/substack/stream-handbook)中)
+与后端脚本建立连接，并在任意加载前注入到DOM中。
 
 You can choose to use this streaming interface to connect to the ConfluxPortal
 controller over any transport you can wrap with a stream, by connecting it to
