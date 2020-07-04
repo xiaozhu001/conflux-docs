@@ -168,10 +168,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 ~~中文地址：~~
 
-#### 6、 docs/stratum.md Stratum协议介绍
+#### 6、 docs/stratum.md Stratum协议介绍（7月4日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/stratum.md~~
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/stratum-cn.md
 
 #### ~~7、 docs/json-rpc.md json-rps方法（`bounty任务已翻译过`）~~
 ~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/json-rpc.md~~
