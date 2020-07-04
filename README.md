@@ -151,7 +151,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 #### 2、 docs/sync.md 同步
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/sync.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/sync-cn.md
 
 #### 3、 docs/index.md 基本索引（7月3日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/index.md
