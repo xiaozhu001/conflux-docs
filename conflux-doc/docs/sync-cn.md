@@ -51,21 +51,20 @@ pub struct SynchronizationGraphNode {
 
 ```
 
-The graph structure is maintained by the fields `parent`, `children`, `referees`, and `referrers`. Each node has a `graph_status` field representing its status changing during the period from the time when the header arrives to the time when the block is ready to be dispatched to consensus graph. 
+图结构由 `parent`、 `children`、 `referees`、 and `referrers` 字段维护。每个节点都有一个 `graph_status` 字段，代表其从区块头到达，区块准备发送到共识图期间的状态变化。
 
-When a block header enters synchronization graph, it is first checked whether this block is already processed by synchronization graph. 
-If not, it will be added into the graph and the graph structure will be updated accordingly. 
-First, the *parent/children* edge will be established. 
-If the parent of this newly arrived block hasn’t come into synchronization graph, the graph uses a collection `children_by_hash` to handle this. 
-This is a map from block hash to a set of graph nodes. 
-In this case, the graph node representing this newly arrived block header will be added into the graph node set mapped from the parent block hash of this block. 
-This functions as a bookkeeping to remember the relation between the parent block hash and this newly arrived block. 
-Once this parent block comes into the synchronization graph in the future, the corresponding edge between the parent and child nodes can be established and the hash of the parent block will be removed from the `children_by_hash` map. 
-Secondly, the *referees/referrers* edges will also be established. 
-Similarly, the synchronization graph uses a map `referrers_by_hash` to remember the relation between the unarrived referee block and the newly arrived referrer block. 
-The graph node also maintains a `pending_referee_count` field to remember how many referees of the block haven’t come into the synchronization graph.
+当区块头进入同步图时，首先会检查该区块头是否已经被同步图处理过 。如果没有，则将其添加到同步图中，并相应更新图结构。
+首先，要建立*父/子*边。
+如果这个新到达区块的父区块还没有进入同步图时，图会使用集合 `children_by_hash` 来进行处理。
+这是一个从区块摘要到图节点集的映射。
+在这种情况下，表示新到达区块头的图节点会被添加到其父区块摘要映射到的图节点集中。
+该函数的作用是帮助记录父区块摘要和新到来区块之间的关系。
+一旦这个父区块在未来进入到同步图内，就可以建立父节点和子节点之间的对应边，父区块的摘要值也可以从 `children_by_hash` 映射中删除。
+第二，建立 *引用/被引* 边。 
+同样，同步图会使用映射 `referrers_by_hash` 记录未到达被引块和新到达引用块之间的关系。
+图节点还维护了一个 `pending_referee_count` 字段，以记住该块有多少个被引块尚未进入同步图内。
 
-A graph node may be in the following 5 status:
+一个图节点可能处于以下5种状态：
 ```c
 // This block is an invalid block.
 const BLOCK_INVALID: u8 = 0;
