@@ -98,7 +98,7 @@ const BLOCK_GRAPH_READY: u8 = 3;
 这可能会使其部分后代成为 `BLOCK_GRAPH_READY` 。 
 如果新到达块的主体至少为 `BLOCK_HEADER_GRAPH_READY` ，则可以成为被中继转发的对象。
 
-### Garbage Collect Dangling Blocks
+### 垃圾回收
 一些（敌手）节点可能会向全节点发送一些永远不能处于 `BLOCK_GRAPH_READY` 状态的区块，例如在进行DDOS攻击或在消息严重延迟的情况下，会使该区块不再属于当前的检查点。
 这些区块将被保存在同步图中，为避免内存资源的浪费，最终应当被作为垃圾回收。 
 为做到这一点，同步图会维护一组代表图尚未准备好的区块边界区块信息。
