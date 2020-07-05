@@ -4,81 +4,41 @@ Conflux共识层处理所有从同步层接收到的区块，基于Conflux的GHA
 
 本文档是为想要了解Conflux共识层（在目录：core/src/consensus中）的rust实现细节的读者提供了一个顶层描述。如果需要查看更多的实现细节，可以关注代码内的注释。如果需要了解更多Conflux共识算法的信息，可以关注Conflux协议规范和论文(https://arxiv.org/abs/1805.03870) 。 
 
-## Design Goals
+## 设计目标
 
-The consensus layer has the following design goals. 
+共识层有以下的设计目标。 
 
-1. Process new blocks in the background following the consensus algorithm
-consistently.
+1. 在后台按照共识算法持续处理新的区块。
 
-2. We want to minimize the memory usage of each block in the consensus graph.
-Even with the checkpoint mechanism, the graph will contain 300K-500K blocks in
-the normal case and more than 1M blocks when facing liveness attacks. This may
-stress the memory.
+2. 我们希望将共识图内的每个区块的内存使用量最小化。即使采用了检查点机制，在正常情况下，图中也会包含300K-500K个区块，而在面临liveness攻击时，甚至会包含1M个以上的区块。这可能会为内存带来压力。
 
-3. We want to process each block fast. Because full/archive nodes have to
-process every block from the *original genesis* when they catch up with the
-network from scratch, fast block process is important to keep the catch up
-period short.
+3. 我们需要快速处理每个区块。因为全/归档节点从*创世*开始追赶网络时，快速的块处理进程对保持追赶周期较短是非常重要的。
 
-4. Robust against potential attacks. Malicious attackers may generate bad
-blocks at arbitrary positions in the TreeGraph.
+4. 对潜在的攻击有很强的抵御能力。恶意攻击者可能会在树图中的任意位置生成不良的区块。
 
-## Structures and Components
+## 架构和组件
 
-### ConsensusGraph
+### 共识图
 
-`ConsensusGraph` (core/src/consensus/mod.rs) is the main struct of the
-consensus layer. The synchronization layer constructs `ConsensusGraph` with a
-`BlockDataManager` which stores all block metadata information on disk.
-`ConsensusGraph::on_new_block()` is the key function to send new blocks to the
-`ConsensusGraph` struct to process. It also provides a set of public functions
-to query the status of blocks/transactions. This should be the main interface
-with which other components interact.
+`ConsensusGraph` (core/src/consensus/mod.rs)是共识层的主要结构。同步层使用 `BlockDataManager` 构建 `ConsensusGraph` ，其中 `BlockDataManager` 负责将所有区块的元数据信息存储在磁盘上。
+`ConsensusGraph::on_new_block()` 是将区块发送至 `ConsensusGraph` 结构并处理的关键函数。它也提供了一组公开函数以便查询区块/交易的状态。这应该是与其他组件交互的主要接口。
 
 ### ConsensusGraphInner
 
-`ConsensusGraphInner` (core/src/consensus/consensus_inner/mod.rs) is the inner
-structure of `ConsensusGraph`. `ConsensusGraph::on_new_block()` acquires the
-write lock of the inner struct at the start of the function. The rest are
-query functions that only acquire read locks.
+`ConsensusGraphInner` (core/src/consensus/consensus_inner/mod.rs) 是 `ConsensusGraph` 的内部结构。 `ConsensusGraph::on_new_block()` 在函数开始时获取内部结构的写入锁。其余的是只需要获取读取锁的查询函数。
 
-The internal structure of `ConsensusGraphInner` is fairly complicated.
-Generally speaking, it maintains two kinds of information. The first kind of
-information is the state of the whole TreeGraph, i.e., the current *pivot
-chain*, *timer chain*, *difficulty*, etc.. The second kind of information is
-the state of each block (i.e., `ConsensusGraphNode` struct for each block).
-Each block corresponds to a `ConsensusGraphNode` struct for its information.
-When it first enters `ConsensusGraphInner`, it will be inserted into
-``ConsensusGraphInner::arena : Slab<ConsensusGraphNode>``. The index in the
-slab will become the arena index of the block in `ConsensusGraphInner`. We use
-the arena index to represent a block internally instead of `H256` because it is
-much cheaper. We will refer back to the fields in `ConsensusGraphInner` and
-`ConsensusGraphNode` when we talk about algorithm mechanism and their
-implementations.
+`ConsensusGraphInner` 的内部结构是相当复杂的。通俗来讲，其维护了两类信息。一是整个树图的状态信息，如当前的*主轴链*、*时钟链*、*难度*等。二是每个区块的状态信息（如每个区块的 `ConsensusGraphNode` 结构）。每一个区块都对应与一个用于获取其信息的 `ConsensusGraphNode` 结构。
+当区块第一次进入 `ConsensusGraphInner` 时，它将被插入 ``ConsensusGraphInner::arena : Slab<ConsensusGraphNode>`` 。在slab中的索引将会成为 `ConsensusGraphInner` 中的区块arena索引。 我们使用arena索引替代 `H256` 的原因是开销更低。在谈到算法机制及其实现时我们会重新提到 `ConsensusGraphInner` 和 `ConsensusGraphNode` 字段。
 
 ### ConsensusNewBlockHandler
 
 `ConsensusNewBlockHandler`
-(core/src/consensus/consensus_inner/consensus_new_block_handler.rs) contains a
-set of routines for processing a new block. In theory, this code could be part
-of `ConsensusGraphInner` because it mostly manipulates the inner struct.
-However, these routines are all subroutine of the `on_new_block()` and the
-consensus_inner/mod.rs is already very complicated. We therefore decided to put
-them into a separate file.
+(core/src/consensus/consensus_inner/consensus_new_block_handler.rs) 包含一组用于处理新区块的例程。从理论上说，由于主要对内部结构进行操作，该代码实质上是 `ConsensusGraphInner` 的一部分。然而，这些例程都是 `on_new_block()` 的子例程且consensus_inner/mod.rs已经非常复杂了。因此我们决定将他们放在单独的文件中。
 
 ### ConsensusExecutor
 
 `ConsensusExecutor` (core/src/consensus/consensus_inner/consensus_executor.rs)
-is the interface struct for the standalone transaction execution thread.
-`ConsensusExecutor::enqueue_epoch()` allows other threads to send an execution
-task to execute the epoch of a given pivot chain block asynchronously. Once the
-computation finishes, the resulting state root will be stored into
-`BlockDataManager`. Other threads can call
-`ConsensusExecutor::wait_for_result()` to wait for the execution of an epoch if
-desired. In the current implementation, `ConsensusExecutor` also contains the
-routines for the calculation for block rewards, including
-`get_reward_execution_info()` and its subroutines.
+是独立交易执行线程的接口结构。 `ConsensusExecutor::enqueue_epoch()` 允许其他线程发送一个以异步方式执行给定主轴链区块的纪元的执行任务。一旦计算完成，结果状态根会被存储到 `BlockDataManager` 中。如果需要，其他线程可以通过调用 `ConsensusExecutor::wait_for_result()` 以等待纪元的执行。在当前的实现中， `ConsensusExecutor` 也包含了计算区块奖励的例程，包括 `get_reward_execution_info()` 及其子例程。
 
 ### ConfirmationMeter
 
