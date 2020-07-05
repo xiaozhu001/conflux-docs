@@ -6,7 +6,7 @@ ConfluxPortal已经持续开发了近一年时间。我们也在逐渐发现一�
 
 ![ConfluxPortal-architecture-diagram](./architecture.png)
 
-`ConfluxPortal-background` 描述了位于 `app/scripts/background.js` 的Web扩展单例文件，该上下文实例化了一个 `ConfluxPortal Controller` 实例，代表用户的账户，与区块链的连接以及与新Dapp的交互。
+`ConfluxPortal-background` 描述了位于路径 `app/scripts/background.js` 下的Web扩展单例文件，该上下文会实例化了一个 `ConfluxPortal Controller` 实例，能够代表用户的账户，与区块链网络的连接以及与新Dapp的交互。
 
 当访问新站点时，WebExtension会在页面上下文中创建一个可以在`app/scripts/contentscript.js` 中看到的新 `ContentScript` 。该脚本表示每页的设置过程：为每个页面创建 `web3` 应用程序接口，并通过移植API(封装在[stream abstraction](https://github.com/substack/stream-handbook)中)
 与后端脚本建立连接，并在任意加载前注入到DOM中。
