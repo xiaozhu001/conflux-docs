@@ -10,7 +10,7 @@ Conflux共识层处理所有从同步层接收到的区块，基于Conflux的GHA
 
 1. 在后台按照共识算法持续处理新的区块。
 
-2. 我们希望将共识图内的每个区块的内存使用量最小化。即使采用了检查点机制，在正常情况下，图中也会包含300K-500K个区块，而在面临liveness攻击时，甚至会包含1M个以上的区块。这可能会为内存带来压力。
+2. 我们希望将共识图内的每个区块的内存使用量最小化。即使采用了检查点机制，在正常情况下，图中也会包含300K-500K个区块，而在面临存活性攻击时，甚至会包含1M个以上的区块。这可能会为内存带来压力。
 
 3. 我们需要快速处理每个区块。因为全/归档节点从*创世*开始追赶网络时，快速的块处理进程对保持追赶周期较短是非常重要的。
 
@@ -42,73 +42,34 @@ Conflux共识层处理所有从同步层接收到的区块，基于Conflux的GHA
 
 ### ConfirmationMeter
 
-`ConfirmationMeter` (core/src/consensus/consensus_inner/confirmation_meter.rs)
-conservatively calculates the confirmation risk of each pivot chain block. Its
-result will be useful for the storage layer to determine when it is *safe* to
-discard old snapshots. It can also be used to serve RPC queries about block
-confirmation if we decide to provide such RPC.
+`ConfirmationMeter` (core/src/consensus/consensus_inner/confirmation_meter.rs)保守的计算每个主轴链区块的确认风险。其结果能够帮助存储层确定何时丢弃旧快照是*安全*的。如果我们决定提供这样的RPC，它也可以用来服务于区块确认的RPC查询。
 
 ### AnticoneCache and PastsetCache
 
-`AnticoneCache` (core/src/consensus/anticone_cache.rs) and `PastsetCache`
-(core/src/consensus/pastset_cache.rs) are two structs that implement customized
-caches for data structures in `ConsensusGraphInner`. In the implementation of
-the inner struct, we need to calculate and store the anticone set and the past
-set of each block. However, it is not possible to store all of these sets in
-memory. We therefore implement cache style data structures to store sets for
-recently inserted/accessed blocks. If an anticone/past set is not found in the
-cache, we will recalculate the set in the current inner struct implementation. 
+`AnticoneCache` (core/src/consensus/anticone_cache.rs) 及 `PastsetCache`
+(core/src/consensus/pastset_cache.rs)是两个实现了 `ConsensusGraphInner` 中数据结构的自定义缓存结构。 在内部结构的实现中，我们需要计算和存储anticone集和过去每个区块的集合。我们因此实现了缓存式的数据结构来存储最近插入/访问的区块集合。如果anticone/过去区块集合没有在缓存内找到，我们将在当前内部结构的实现中重新计算集合。
 
-## Important Algorithmic Mechanisms
+## 重要的算法机制
 
-There are several important algorithmic mechanisms in the Conflux Consensus
-Layer. Here we will talk about them from the implementation aspect. See XXX for
-the algorithmic reasoning behind them.
+在Conflux的共识层中含有一系列重要的算法机制。在这里我们将从其实现的方面进行探讨。参见XXX背后的算法推理。
 
-### Pivot Chain and Total Order
+### 主轴链和总顺序
 
-The basic idea of the Conflux consensus algorithm is to first make everyone
-agree on a pivot chain. It then expands the total order from the pivot chain to
-cover all blocks with a topological sort. As long as the pivot chain does not
-change/reorg, the total order of blocks will stay the same, so does the derived
-order of transactions. 
+Conflux共识算法的基本思想是先让大家任何主轴链。随后它通过拓扑排序将主轴链的总顺序扩展到覆盖所有区块。由于主轴链不会改动/重组，区块的总顺序和派生的交易顺序将保持不变。
 
-Comparing with Bitcoin/Ethereum, the consensus in Conflux has two key
-differences: 
+与比特币/以太坊相比，Conflux中的共识有两个关键的区别：
 
-1. *almost every block* will go into the total order, not just the agreed pivot
-chain.
+1. *几乎所有区块* 都会进入到总顺序中，而不是仅仅接受主轴链。
 
-2. The transaction validity and the block validity are *independent*. For example, a
-transaction is invalid if it was included before or it cannot carry out due to
-insufficient balance. Such invalid transactions will become noop during the
-execution. However, *unlike Bitcoin and Ethereum blocks containing such
-transactions will not become invalid*.
+2. 交易的有效性和区块的有效性是 *相互独立的* 。例如如果某项交易在之前已被纳入记录或因为余额不足而无法进行，则该交易无效。这类无效交易在执行期间会成为空操作。然而*比特币和以太坊中包含这类交易的区块不会变为无效状态*。
 
-In `ConsensusGraphInner`, the arena index of the current pivot chain blocks are
-stored in order in the `pivot_chain[]` vector. To maintain it, we calculate the
-lowest common ancestor (LCA) between the newly inserted block and the current best
-block following the GHAST rule. If the fork corresponding to the newly inserted
-block for the LCA ended up to be heavier, we will update the `pivot_chain[]` from
-the forked point.
+在 `ConsensusGraphInner` 中，当前主轴链的arena索引会按顺序存储在 `pivot_chain[]` 向量中。为了维护它，我们依照GHAST规则计算新插入的区块和当前最优区块之间的最近公共祖先（LCA）。如果对应于最近公共祖先的新插入区块的分叉最终变得更重，我们将从分叉点处更新 `pivot_chain[]` 。
 
-### Timer Chain
+### 时钟链
 
-Blocks whose PoW quality is `timer_chain_difficulty_ratio` times higher than the target
-difficulty are *timer blocks*. The `is_timer` field of the block will be set to
-True. The consensus algorithm then finds the longest timer block chain (more
-accurately, with greatest accumulated difficulty) similar to the Bitcoin
-consensus algorithm of finding the longest chain. The arena index of this
-longest timer chain will be stored into `timer_chain[]`. 
+PoW质量比目标难度高 `timer_chain_difficulty_ratio` 倍的区块是*时钟区块*。区块中的 `is_timer` 字段会被设置为真。共识算法随后按照类似于比特币共识算法查找最长链的方法查找最长的时钟链（更精确地说，是具有最高的累计难度）。最长时钟链的arena索引会被存储至 `timer_chain[]` 中。
 
-The rationale of the timer chain is to provide a coarse-grained measurement of
-time that cannot be influenced by a malicious attacker. Because timer blocks
-are rare and generated slowly (if `timer_chain_difficulty_ratio` is properly
-high), a malicious attacker cannot prevent the growth of the timer chain unless
-it has the majority of the computation power. Therefore how many timer chain
-blocks appear in the past set of a block is a good indication about the latest
-possible generation time of the block. We compute this value for each block and
-store it in `timer_chain_height` field of the block.
+时钟链的基本原理是为了提供一种不受恶意攻击者影响的粗粒度时间度量方案。由于时钟区块稀少且生成速度较慢（如果`timer_chain_difficulty_ratio` 适当高），一个恶意的攻击者除非具备大部分的算力，否则无法限制时钟链的增长。因此，在过去的区块集中出现多少个时钟链能够很好地表示区块最可能的新生成时间。我们为每一个区块计算该值并将其存入到区块中的 `timer_chain_height` 字段。
 
 ### Weight Maintenance with Link-Cut Tree
 
