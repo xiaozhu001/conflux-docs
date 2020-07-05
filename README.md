@@ -68,10 +68,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/creating-metrics-events-cn.md
 
-#### 14、 docs/porting_to_new_environment.md 移植到新环境
+#### 14、 docs/porting_to_new_environment.md 移植到新环境（7月5日:white_check_mark:，`希望请专家审校`）
 English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/docs/porting_to_new_environment.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/docs/porting_to_new_environment-cn.md
 
 #### ~~15、 USER_AGREEMENT.md 用户许可~~
 ~~English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/USER_AGREEMENT.md~~
