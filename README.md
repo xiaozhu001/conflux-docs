@@ -73,10 +73,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址：
 
-#### 15、 USER_AGREEMENT.md 用户许可
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/USER_AGREEMENT.md
+#### ~~15、 USER_AGREEMENT.md 用户许可~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/USER_AGREEMENT.md~~
 
-中文地址：
+~~中文地址：~~
 
 #### ~~16、 test/e2e/fixtures/README.md （端到端测试）文档介绍~~
 
