@@ -1,18 +1,8 @@
-# The Conflux Consensus Layer Design and Implementation
+# Conflux共识层设计与实现
 
-The Conflux consensus layer processes all incoming blocks received from the
-synchronization layer, produces the total order of blocks based on the Conflux
-GHAST consensus algorithm, and invokes the underlying **transaction execution
-engine** to run transactions in the determined order. It provides the
-information necessary to assist **block generator** to prepare the block skeleton of new
-blocks. It also notifies the **transaction pool** about processed transactions
-so that the pool can make better transaction selection decisions. 
+Conflux共识层处理所有从同步层接收到的区块，基于Conflux的GHAST共识算法产生区块的总顺序，并调用其底层的**交易执行引擎**，按照确定的顺序运行交易。它提供了协助**区块生成器**准备新区块骨架的必要信息。它同时还会将已处理过的交易情况通知**交易池**，以便交易池能够做出更好的交易选择决策。
 
-This document is to provide a high-level overview for readers who want to
-understand the rust implementation of the Conflux consensus layer (in directory
-core/src/consensus). For more implementation details, see inlined comments in
-the code. For more information about the Conflux consensus algorithm, see 
-Conflux Protocol Specification and Conflux paper (https://arxiv.org/abs/1805.03870). 
+本文档是为想要了解Conflux共识层（在目录：core/src/consensus中）的rust实现细节的读者提供了一个顶层描述。如果需要查看更多的实现细节，可以关注代码内的注释。如果需要了解更多Conflux共识算法的信息，可以关注Conflux协议规范和论文（https://arxiv.org/abs/1805.03870）。 
 
 ## Design Goals
 
