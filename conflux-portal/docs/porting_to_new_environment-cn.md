@@ -2,7 +2,7 @@
 
 ConfluxPortal已经持续开发了近一年时间。我们也在逐渐发现一些有用的抽象方便我们更容易的成长。这几层想法结合起来，可以让ConfluxPortal越来越容易移植到新的环境和语境中（尽管它可以更容易，但如果您卡住了，请联系我们！）。
 
-在我们开始之前，我们的基本架构是值得去熟悉的。
+在我们开始之前，我们的基础架构是值得去熟悉的。
 
 ![ConfluxPortal-architecture-diagram](./architecture.png)
 
