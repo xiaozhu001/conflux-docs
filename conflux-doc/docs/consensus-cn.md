@@ -71,64 +71,27 @@ PoW质量比目标难度高 `timer_chain_difficulty_ratio` 倍的区块是*时�
 
 时钟链的基本原理是为了提供一种不受恶意攻击者影响的粗粒度时间度量方案。由于时钟区块稀少且生成速度较慢（如果`timer_chain_difficulty_ratio` 适当高），一个恶意的攻击者除非具备大部分的算力，否则无法限制时钟链的增长。因此，在过去的区块集中出现多少个时钟链能够很好地表示区块最可能的新生成时间。我们为每一个区块计算该值并将其存入到区块中的 `timer_chain_height` 字段。
 
-### Weight Maintenance with Link-Cut Tree
+### 使用动态树维护权重信息
 
-To effectively maintain the pivot chain, we need to query the total weight of a
-subtree. Conflux uses a Link-Cut Tree data structure to maintain the subtree
-weights in O(log n). The Link-Cut Tree can also calculate the LCA of any two nodes
-in the TreeGraph in O(log n). The `weight_tree` field in `ConsensusGraphInner`
-is the link-cut tree that stores the subtree weight of every node. Note that
-the implementation of the Link-Cut Tree is in the utils/link-cut-tree
-directory.
+为了更高效的的维护主轴链，我们需要查询子树的总权重。Conflux使用动态树数据结构以O(log n)的效率维护子树权重信息。动态树还可以以O(log n)的效率树图中任意两个节点的最近公共祖先（LCA）。 `ConsensusGraphInner` 中的 `weight_tree` 字段是存储每个节点子树权重的动态树信息。请注意，动态树的实现位于utils/link-cut-tree目录下。
 
-### Adaptive Weight
+### 自适应权重Adaptive Weight
 
-If the TreeGraph is under a liveness attack, it may fail to converge under one
-block for a while. To handle this situation, the GHAST algorithm idea is to
-start to generate adaptive blocks, i.e., blocks whose weights are redistributed
-significantly so that there will be many zero weight blocks with a rare set of
-very heavy blocks. Specifically, if the PoW quality of an adaptive block is
-`adaptive_heavy_block_ratio` times of the target difficulty, the block
-will have a weight of `adaptive_heavy_block_ratio`; otherwise, the block will
-have a weight of zero. This effectively slows down the confirmation
-temporarily but will ensure the consensus progress.
+如果树图正在面临存活性攻击时，可能会在一段时间里无法收敛到一个块中。为了处理这种情况，GHAST算法思路是开始生成自适应区块，即那些权重明显被重新分配的块，因此将会有许多零权重的块，其中也会包含非常少的非常重的块。特别的，如果一个自适应块的工作量证明质量是目标难度的 `adaptive_heavy_block_ratio` 倍，该区块的权重会是 `adaptive_heavy_block_ratio`； 否则该区块的权重为0。这样的思路会暂时的减缓确认速度，但能够确保共识进度。
 
-Because adaptive weight is a mechanism to defend against rare liveness attacks,
-it should not be turned on during the normal scenario. A new block is adaptive
-only if: 1) one of its ancestor blocks is still not the dominant subtree
-comparing to its siblings, and 2) a significantly long period of time has passed
-between the generation of that ancestor block and the new block (i.e., the
-difference of `timer_chain_height` is sufficiently large). `ConsensusGraphInner::adaptive_weight()`
-and its subroutines implement the algorithm to determine whether a block is
-adaptive or not. Note that the implementation uses another link-cut-tree
-`adaptive_tree` as a helper. Please see the inlined comments for the
-implementation details. 
+由于自适应权重是一种能够防御稀有存活性攻击的机制，因此在正常情况下不应将其打开。只有在以下的情况下，新区块才是一个自适应的区块：1）它的一个祖先块与它的兄弟节点相比，仍旧不是主要的子树，和2）祖先区块的生成时间和新区块的生成时间之间已经有了很长一段时间（即，`timer_chain_height` 的差距足够大）。 `ConsensusGraphInner::adaptive_weight()` 及其子例程实现了决策区块是否是自适应块的算法。需要注意的是其实现使用到了另一个动态树 `adaptive_tree` 作为辅助。请查看内嵌注释以获取实现细节。
 
-### Partial Invalid
+### 部分无效
 
-Note that the past set of a new block denotes all the blocks that the generator
-of the new block observes at the generation time. Therefore, from the past set
-of a new block, other full nodes could determine whether it chooses the correct
-parent block and whether it should be adaptive or not. 
+需要注意的是，新生成区块的过去集合表示块生成器在生成区块时观察到的所有区块。因此，通过新生成区块的过去集合，其他全节点可以确定其是否选择了正确的父区块以及其是否为自适应块。
 
-The Conflux consensus algorithm defines those blocks who choose incorrect
-parents or fill in incorrect adaptive status as *partial invalid blocks*. For a
-partial invalid block, the `partial_invalid` field will be set to True. The
-algorithm requires the partial invalid blocks being treated differently from
-the normal blocks in three ways:
+Conflux共识算法将这些选取不正确父区块和填充不正确自适应状态的区块定义为*部分无效区块*。对于一个部分无效区块，其 `partial_invalid` 字段将被设置为真。算法需要按照三种方式将部分无效区块与正常区块区分对待：
 
-1. All honest nodes will not reference directly or indirectly partial invalid
-blocks until a significant period of time. This time period is measured with
-the `timer_chain_height` and the difference has to be more than
-`timer_chain_beta`. Yes, it means that if another otherwise perfectly fine
-block referencing the partial invalid block, both of these two blocks will not
-be referenced for a while.
+1. 所有的诚实节点在相当长的一段时间内不会直接或间接引用这些部分无效区块。这段时间使用 `timer_chain_height` 度量，且差值必须大于 `timer_chain_beta` 。是的，这意味着如果另一个完美无缺的区块引用了部分无效区块，则这两个区块在一段时间内都不会被引用。
 
-2. Partial invalid blocks will have no block reward. They are extremely
-unlikely to get any reward anyway because of their large anticone set due to
-the first rule.
+2. 部分无效区块会没有区块奖励。由于规则一，它们的光锥外区块集合较大，因此它们极有可能不获得任何奖励。
 
-3. Partial invalid blocks are excluded from the timer chain consideration.
+3. 在时钟链的考虑中会排除部分无效区块。
 
 To implement the first rule, the `on_new_block()` routine in
 `ConsensusNewBlockHandler` is separated into two subroutine
