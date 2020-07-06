@@ -107,12 +107,7 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 为了检查一个新的区块是否选取了正确的父区块，通过假设新区块在主轴链上，我们首先计算了新区块所在纪元内的区块集。将集合存储到字段 `blockset_in_own_view_of_epoch` 处。随后，我们对这个集合中的每一个候选区块进行迭代，以确保所选的父区块比它更好。具体来说，我们从其最近公共祖先中找出候选块和父块的两个分叉块并确保父区块所在的分叉权重较高。这一逻辑在
 `ConsensusNewBlockHandler`的 `check_correct_parent()` 中实现。
 
-Note that `blockset_in_own_view_of_epoch` may become too large to hold
-consistently in memory as well. Especially if a malicious attacker tries to
-generate invalid blocks to blow up this set. The current implementation will
-only periodically clear the set and only keep the sets for pivot chain blocks.
-Note that for pivot chain blocks, this set will also be used during the
-transaction execution.
+需要注意的是 `blockset_in_own_view_of_epoch` 可能会变得太大而无法在内存中保持一致。尤其是如果恶意攻击者尝试生成无效区块以至于溢出该集合。当前的实现中会定期清理集合，并且仅让集合只保留主轴链区块。请注意对于主轴链区块，该集合还会在交易执行期间使用。
 
 ### Fallback Brute Force Methods
 
