@@ -96,26 +96,11 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 为了实现规则一，在 `ConsensusNewBlockHandler` 内的 `on_new_block()` 例程会被分割为 `preactivate_block()` 和 `activate_block()` 两个子例程。 `preactivate_block()` 计算并确定区块是否为部分无效区块，而 `activate_block()` 会将区块集成到共识图的内部数据结构中。对于每个新区块， `active_cnt` 追踪其引用了多少个不活跃区块。如果一个区块直接或间接的引用一个部分无效区块，该区块将会是不活跃区块。只有在区块的
 `active_cnt` 变为0时 `activate_block()` 才会被调用。 `activated` 表示区块是否活跃。对于部分无效区块来说，其激活操作将被延迟知道当前账本的时钟链比无效区块高 `timer_chain_beta` 时。新生成的区块不会引用任何不活跃区块，如，这些不活跃块将被视为不在树图中。
 
-### Anticone, Past View, and Ledger View
+### 光锥外、过往视图和账本视图
 
-In order to check the partial invalid status of each block, we need to operate
-under the *past view* of the block to determine its correct parent and its
-adaptivity. This is different from the current state of the TreeGraph or we
-call it the *ledger view*, i.e., all blocks in the anticone and the future set
-of the block are excluded. Because we process blocks in topological order, the
-future set of a new block is empty. We therefore need to eliminate all anticone
-blocks only.
+为了检查每个区块的部分无效状态，我们需要对区块的*过往视图*进行操作以决定其正确的父区块及适应性。这与树图的当前状态不同，或者说我们称之为或称之为*账本视图*，即所有在光锥外块集合和未来集合中的区块都会被排除在外。由于我们会按照拓扑顺序处理区块，新区块的未来集合为空。因此，我们只需要消除所有的光锥外区块即可。
 
-`compute_and_update_anticone()` in `ConsensusNewBlockHandler` computes the
-anticone set of a new block. Note that because the anticone set may be very
-large, we have two implementation level optimizations. First, we represent the
-anticone set as a set of barrier nodes in the TreeGraph, i.e., a set of
-subtrees where each block in the subtrees is in the anticone set. Second, we
-will maintain the anticone set of the recently accessed/inserted blocks
-only. When checking whether a block is valid in its past view or not (e.g., in
-`adaptive_weight()` and in `check_correct_parent()`), we first cut all barrier
-subtrees from the link-cut weight trees accordingly to get the state of the
-past view. After the computation, we restore these anticone subtrees.
+`ConsensusNewBlockHandler` 中的 `compute_and_update_anticone()` 负责计算新区块的光锥外块集合。要注意的是由于光锥外块集合可能会非常大，我们在实现时进行了两个层面的优化。一，在树图中将光锥外块集合标识为障碍节点集合，即树内每一个区块都在光锥外块集合中的一组子树。二，我们只会维护最近访问/插入区块的光锥外块集合。当检查一个区块在其过往视图中是否是有效时（如，`adaptive_weight()` 和 `check_correct_parent()`），我们首先对动态权重树中的障碍子树进行剪枝，得到过往视图的装填。在计算后，我们会恢复这些光锥外子树。
 
 ### Check Correct Parent
 
