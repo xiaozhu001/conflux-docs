@@ -102,17 +102,10 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 
 `ConsensusNewBlockHandler` 中的 `compute_and_update_anticone()` 负责计算新区块的光锥外块集合。要注意的是由于光锥外块集合可能会非常大，我们在实现时进行了两个层面的优化。一，在树图中将光锥外块集合标识为障碍节点集合，即树内每一个区块都在光锥外块集合中的一组子树。二，我们只会维护最近访问/插入区块的光锥外块集合。当检查一个区块在其过往视图中是否是有效时（如，`adaptive_weight()` 和 `check_correct_parent()`），我们首先对动态权重树中的障碍子树进行剪枝，得到过往视图的装填。在计算后，我们会恢复这些光锥外子树。
 
-### Check Correct Parent
+### 检查正确的父区块
 
-To check whether a new block chooses a correct parent block or not, we first
-compute the set of blocks inside the epoch of the new block assuming that 
-the new block is on the pivot chain. We store this set to the field
-`blockset_in_own_view_of_epoch`. We then iterate over every candidate block in
-this set to make sure that the chosen parent block is better than it.
-Specifically, we find out the two fork blocks of the candidate block and the
-parent block from their LCA and make sure that the fork of the parent is
-heavier. This logic is implemented in `check_correct_parent()` in
-`ConsensusNewBlockHandler`.
+为了检查一个新的区块是否选取了正确的父区块，通过假设新区块在主轴链上，我们首先计算了新区块所在纪元内的区块集。将集合存储到字段 `blockset_in_own_view_of_epoch` 处。随后，我们对这个集合中的每一个候选区块进行迭代，以确保所选的父区块比它更好。具体来说，我们从其最近公共祖先中找出候选块和父块的两个分叉块并确保父区块所在的分叉权重较高。这一逻辑在
+`ConsensusNewBlockHandler`的 `check_correct_parent()` 中实现。
 
 Note that `blockset_in_own_view_of_epoch` may become too large to hold
 consistently in memory as well. Especially if a malicious attacker tries to
