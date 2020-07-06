@@ -178,10 +178,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 ~~中文地址：https://zh-hans.developer.conflux-chain.org/docs/conflux-doc/json_rpc#json-rpc-方法~~
 
-#### 8、 docs/consensus.md 共识
+#### 8、 docs/consensus.md 共识（7月6日尚未完成:x:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/consensus.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/consensus-cn.md
 
 #### ~~9、 docs/get_started.md 启程（`bounty任务已翻译过`）~~
 ~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/get_started.md~~
