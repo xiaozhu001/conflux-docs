@@ -114,7 +114,7 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 如果恶意攻击者尝试向Conflux发起性能攻击，就会出现光锥外障碍区块集合过大的情况。这将使默认策略比O(n)更糟糕，因为在进行动态树剪枝时，障碍集中的每个区块都会有一个O(log n)因素。为此，我们实现了一种蛮力例程 `compute_subtree_weights()` ，以便以O(n)的效率计算过去视图中每个区块的子树权重。我们也实现了
 `check_correct_parent_brutal()` 和 `adaptive_weight_impl_brutal()` 检查使用蛮力计算得到的子树权重。
 
-### Force Confirmation
+### 强制确认
 
 The Conflux consensus algorithm will *force confirm* a block if 1) there are
 `timer_chain_beta` consecutive timer chain blocks under the subtree of the
