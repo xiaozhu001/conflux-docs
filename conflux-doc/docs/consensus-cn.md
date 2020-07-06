@@ -93,20 +93,8 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 
 3. 在时钟链的考虑中会排除部分无效区块。
 
-To implement the first rule, the `on_new_block()` routine in
-`ConsensusNewBlockHandler` is separated into two subroutine
-`preactivate_block()` and `activate_block()`. `preactivate_block()` compute and
-determine whether a block is partial invalid or not, while `activate_block()`
-fully integrate a block into the consensus graph inner data structures. For
-every new block, the field `active_cnt` tracks how many inactive blocks it
-references. A block is inactive if it references directly or indirectly a
-partial invalid block. `activate_block()` will be called on a block only when
-`active_cnt` of the block becomes zero. The field `activated` denotes whether a
-block is active or not. For partially invalid blocks, their activation will be
-delayed till the current timer chain height of the ledger is `timer_chain_beta`
-higher than the invalid block. Newly generated blocks will not reference any
-inactive blocks, i.e., these inactive blocks are treated as if they were not in
-the TreeGraph.
+为了实现规则一，在 `ConsensusNewBlockHandler` 内的 `on_new_block()` 例程会被分割为 `preactivate_block()` 和 `activate_block()` 两个子例程。 `preactivate_block()` 计算并确定区块是否为部分无效区块，而 `activate_block()` 会将区块集成到共识图的内部数据结构中。对于每个新区块， `active_cnt` 追踪其引用了多少个不活跃区块。如果一个区块直接或间接的引用一个部分无效区块，该区块将会是不活跃区块。只有在区块的
+`active_cnt` 变为0时 `activate_block()` 才会被调用。 `activated` 表示区块是否活跃。对于部分无效区块来说，其激活操作将被延迟知道当前账本的时钟链比无效区块高 `timer_chain_beta` 时。新生成的区块不会引用任何不活跃区块，如，这些不活跃块将被视为不在树图中。
 
 ### Anticone, Past View, and Ledger View
 
