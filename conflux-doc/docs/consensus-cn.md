@@ -109,16 +109,10 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 
 需要注意的是 `blockset_in_own_view_of_epoch` 可能会变得太大而无法在内存中保持一致。尤其是如果恶意攻击者尝试生成无效区块以至于溢出该集合。当前的实现中会定期清理集合，并且仅让集合只保留主轴链区块。请注意对于主轴链区块，该集合还会在交易执行期间使用。
 
-### Fallback Brute Force Methods
+### 蛮力法的的应变计划
 
-There are situations where the anticone barrier set is too large if a malicious
-attacker tries to launch a performance attack on Conflux. This will make the
-default strategy worse than O(n) because there is a factor of O(log n) for each
-block in the barrier set when we do the link-cut tree chopping. To this end, we
-implemented a brute force routine `compute_subtree_weights()` to compute the
-subtree weights of each block in a past view for O(n). We also implement
-`check_correct_parent_brutal()` and `adaptive_weight_impl_brutal()` to use the
-brute-force computed subtree weight to do the checking instead. 
+如果恶意攻击者尝试向Conflux发起性能攻击，就会出现光锥外障碍区块集合过大的情况。这将使默认策略比O(n)更糟糕，因为在进行动态树剪枝时，障碍集中的每个区块都会有一个O(log n)因素。为此，我们实现了一种蛮力例程 `compute_subtree_weights()` ，以便以O(n)的效率计算过去视图中每个区块的子树权重。我们也实现了
+`check_correct_parent_brutal()` 和 `adaptive_weight_impl_brutal()` 检查使用蛮力计算得到的子树权重。
 
 ### Force Confirmation
 
