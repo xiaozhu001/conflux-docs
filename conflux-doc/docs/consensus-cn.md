@@ -116,6 +116,7 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 
 ### 强制确认
 
+Conflux共识算法会*强制确认*一个区块如果：1）
 The Conflux consensus algorithm will *force confirm* a block if 1) there are
 `timer_chain_beta` consecutive timer chain blocks under the subtree of the
 block and 2) afterward there are at least `timer_chain_beta` timer chain blocks
