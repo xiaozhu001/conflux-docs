@@ -116,38 +116,18 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 
 ### 强制确认
 
-Conflux共识算法会*强制确认*一个区块如果：1）
-The Conflux consensus algorithm will *force confirm* a block if 1) there are
-`timer_chain_beta` consecutive timer chain blocks under the subtree of the
-block and 2) afterward there are at least `timer_chain_beta` timer chain blocks
-following (not required in the subtree though). Force confirmation means that
-new blocks should follow this block as their ancestor no matter what, ignoring
-subtree weights. Though extremely unlikely a force confirmed block will have
-lesser weights than its siblings.
+Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下有
+`timer_chain_beta` 个连续的时钟链区块及2）之后至少有 `timer_chain_beta` 个时钟链区块跟随（尽管在子树中不是必需的）。强制确认意味着无论如何，新区块都应将该区块作为其祖先区块，而忽略子树权重。尽管被强制确认区块的权重几乎不可能比其兄弟节点轻。
 
-The force confirmation mechanism is to enable checkpoint, which we will
-describe later. It is based on the rationale that:
+强制确认机制用于启用检查点，我们将在随后进行介绍。基于以下理由：
 
-1. Reverting a `timer_chain_beta` length timer chain is impossible.
+1. 几乎不可能恢复 `timer_chain_beta` 长度的时钟链。
 
-2. Therefore force confirmed block will always move along the pivot chain, not
-drifting between its siblings.
+2. 因此强制确认的块将始终沿主轴链移动，而不是在其同级区块之间四处移动。
 
-We compute the accumulative LCA of the last `timer_chain_beta` timer chain
-blocks and store it at the `timer_chain_accumulative_lca[]` field. This vector
-is `timer_chain_beta` shorter than `timer_chain[]` because the force confirm
-needs at least `timer_chain_beta` timer chain block trailing, so their LCAs do
-not matter. `check_correct_parent()` and `adaptive_weight()` and their
-subroutines also respect this force confirm point during their checking.
-Specifically, any fork before the force confirm height is ignored.
+我们计算最后一个 `timer_chain_beta` 时钟链区块的累计最近公共祖先，并将其存储在 `timer_chain_accumulative_lca[]` 字段中。该项量是比 `timer_chain[]` 短 `timer_chain_beta` ，由于强制确认至少需要有 `timer_chain_beta` 个时钟链区块尾随，因此它们的最近公共祖先就显得无关紧要了。 `check_correct_parent()` 和 `adaptive_weight()` 及它们的子例程在进行检查期间也同样遵守这一强制确认思路。具体的，强制确认高度前的任何分叉都会被忽略。
 
-Note that this force confirm rule is also defined based on *past view* of each
-block. With the computed anticone information, `compute_timer_chain_tuple()` in
-`ConsensusGraphInner` computes the timer chain related information of each
-block under its past view. The results of this function include the difference of
-the `timer_chain[]`, `timer_chain_accumulative_lca[]`, and `timer_chain_height`
-between the ledger view and the past view. We can use the diff and the current
-ledger view values to get the past view values.
+注意，该强制确认规则也是基于对每个区块“过往视图”定义的。通过使用计算得到的光锥外信息， `ConsensusGraphInner` 中的 `compute_timer_chain_tuple()` 结合其过往视图计算每个区块与时钟链相关的信息。该函数的结果包括分账视图和过往视图之间 `timer_chain[]` 、 `timer_chain_accumulative_lca[]` 和 `timer_chain_height`的差异。我们可以使用差异和当前的分账视图值获取过往视图值。
 
 ### Era
 
