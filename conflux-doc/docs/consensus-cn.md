@@ -129,22 +129,16 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 
 注意，该强制确认规则也是基于对每个区块“过往视图”定义的。通过使用计算得到的光锥外信息， `ConsensusGraphInner` 中的 `compute_timer_chain_tuple()` 结合其过往视图计算每个区块与时钟链相关的信息。该函数的结果包括分账视图和过往视图之间 `timer_chain[]` 、 `timer_chain_accumulative_lca[]` 和 `timer_chain_height`的差异。我们可以使用差异和当前的分账视图值获取过往视图值。
 
-### Era
+### 时代
 
-In order to implement the checkpoint mechanism, the Conflux consensus algorithm split the
-graph into eras. Every era contains `era_epoch_count` epochs. For example, if the
-`era_epoch_count` is 50000, then there is a new era every 50000 epochs. The
-pivot chain block at the height 50000 will be the genesis of a new era.
-At the era boundary, there are several differences from the normal case.
+为了实现检查点机制，Conflux共识算法将图划分为时代（era）。每一个时代都包含 `era_epoch_count` 个纪元。例如，如果
+`era_epoch_count` 为50000，那么没50000个纪元就是一个新时代。高度为50000的主轴链区块将会成为新时代的创世点。在时代的边界上，相比一般情况有几个不同。
 
-1. A block will enter the total order for execution only if 1) it is under the
-subtree of the previous era genesis and 2) it is inside the past set of the next era genesis in
-the pivot chain.
+1. 一个区块只有在以下情况时才会进入全序中执行： 1）它在上一个时代创世点的子树下，及2）它在下一个时代创世过往集的主轴链中。
 
-2. Anticone penalty calculation for the block reward does not go across the era
-boundary.
+2. 区块奖励的光锥外惩罚计算不会横跨时代边界。
 
-### Checkpoint
+### 检查点
 
 Inside `ConsensusGraphInner`, there are two key height pointers, the current
 checkpoint era genesis block height (`cur_era_genesis_height`) and the current
