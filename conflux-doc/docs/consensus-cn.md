@@ -140,12 +140,7 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 
 ### 检查点
 
-Inside `ConsensusGraphInner`, there are two key height pointers, the current
-checkpoint era genesis block height (`cur_era_genesis_height`) and the current
-stable era genesis block height (`cur_era_stable_height`). These two height pointers
-will always point to some era genesis (being a multiple of `era_epoch_count`).
-Initially, both of these two pointers will point to the true genesis (height
-0).
+在 `ConsensusGraphInner` 内有两个关键的高度指针，当前检查点时代创世区块高度（`cur_era_genesis_height`）及当前稳定时代创世区块高度（`cur_era_stable_height`）。这两个高度指针总是会指向一些时代的创世区块（是 `era_epoch_count` 的倍数）。初始时，这两个指针都将指向真正的创世块（高度为0）。
 
 A new era genesis block becomes stable (i.e., `cur_era_stable_height` moves) if
 the block is *force confirmed* in the current TreeGraph. A stable era genesis
