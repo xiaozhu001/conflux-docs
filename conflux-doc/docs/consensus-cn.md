@@ -148,14 +148,7 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 
 2. 在该区块的光锥外中，没有任何时钟链区块。
 
-`should_move_stable_height()` and `should_form_checkpoint_at()` in
-`ConsensusNewBlockHandler` are invoked after every newly inserted block to test
-the above two conditions. Generally speaking, the stable era genesis block will never be
-reverted off the pivot chain. Any block in the past set of the checkpoint block
-is no longer required for the future computation of the consensus layer.
-Therefore, after a new checkpoint is formed, `make_checkpoint_at()` in
-`ConsensusNewBlockHandler` is called to clean up those blocks that are not in
-the future set of the new checkpoint.
+`ConsensusNewBlockHandler` 中的 `should_move_stable_height()` 及 `should_form_checkpoint_at()` 会在每一个区块新插入后被调用以测试上述两个条件。一般来说，稳定时代的创世区块永远不会从主轴链中消失（reverted off）。共识层的未来计算时，已不再需要检查点区块过往集合中的任何区块。因此，在新的检查点形成时， `ConsensusNewBlockHandler` 中的 `make_checkpoint_at()` 会被调用以清除这些不再新检查点未来集中的区块。
 
 Note that the checkpoint mechanism also changes how we handle a new block. For
 a new block:
