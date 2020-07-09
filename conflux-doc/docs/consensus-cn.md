@@ -161,19 +161,10 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 由于树图的主轴链可能会出现临时性的震荡，所以我们会推迟 `DEFERRED_STATE_EPOCH_COUNT` 个纪元（默认为5）的交易执行。随着主轴链的更新， `activate_block()` 例程将会在排除最后5个纪元的情况使新主轴链的执行任务进入队列。通过在 `ConsensusExecutor` 中调用
 `enqueue_epoch()` 来使每个任务进入队列。
 
-### Block Reward Calculation
+### 区块奖励计算
 
-Because there is no explicit coinbase transaction in Conflux, all block rewards
-are computed implicitly during the transaction execution. In Conflux, the block
-reward is determined by the base reward and the penalty ratio based on the total weight of
-its anticone blocks divided by its epoch pivot block's target difficulty. This anticone set only
-considers blocks appearing no later than the next `REWARD_EPOCH_COUNT` epochs.
-Specifically, if there is a new era then the anticone set will not count across
-the era boundary as well. `get_pivot_reward_index()` in `ConsensusExecutor`
-counts this reward anticone threshold.
-`get_reward_execution_info_from_index()` in `ConsensusExecutor` and its
-subroutines compute this anticone set given the threshold point in the pivot
-chain.
+由于Conflux中没有明确的coinbase交易，因此只有在交易执行期间会隐式计算所有区块奖励。在Conflux中，区块奖励是由基本奖励和惩罚比率决定的，惩罚比例取决于光锥外区块的总权重除以其时代主轴块的目标难度。 该光锥外集合仅仅考虑不迟于下一个 `REWARD_EPOCH_COUNT` 纪元出现的区块。具体来说，如果有一个新时代，那么光锥外集合也不会计入到这个纪元边界。 `ConsensusExecutor` 中的 `get_pivot_reward_index()` 会计算该奖励的光锥外阈值。 `ConsensusExecutor` 中的
+`get_reward_execution_info_from_index()` 及其子例程在给定主轴链中的阈值点的情况下计算此光锥外集合。
 
 ### Blaming Mechanism
 
