@@ -156,13 +156,10 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 
 2. 如果新区块的过往集合不包含稳定时代的创世区块，则不需要检查该区块的部分无效状态。这是由于该区块不会修改时钟链（回想一下我们的假设，即重组后时钟链不会超过 `timer_chain_beta` 个区块）且随后的区块可以直接参考该区块（因为时钟链的差距已经超过 `timer_chain_beta` ）。
 
-### Deferred Execution
+### 延期执行
 
-Because the TreeGraph pivot chain may oscillate temporarily, we defer the
-transaction execution for `DEFERRED_STATE_EPOCH_COUNT` epochs (default 5).
-After a pivot chain update, `activate_block()` routine will enqueue the
-execution task of the new pivot chain except for the last five epochs. It calls
-`enqueue_epoch()` in `ConsensusExecutor` to enqueue each task.
+由于树图的主轴链可能会出现临时性的震荡，所以我们会推迟 `DEFERRED_STATE_EPOCH_COUNT` 个纪元（默认为5）的交易执行。随着主轴链的更新， `activate_block()` 例程将会在排除最后5个纪元的情况使新主轴链的执行任务进入队列。通过在 `ConsensusExecutor` 中调用
+`enqueue_epoch()` 来使每个任务进入队列。
 
 ### Block Reward Calculation
 
