@@ -150,20 +150,11 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 
 `ConsensusNewBlockHandler` 中的 `should_move_stable_height()` 及 `should_form_checkpoint_at()` 会在每一个区块新插入后被调用以测试上述两个条件。一般来说，稳定时代的创世区块永远不会从主轴链中消失（reverted off）。共识层的未来计算时，已不再需要检查点区块过往集合中的任何区块。因此，在新的检查点形成时， `ConsensusNewBlockHandler` 中的 `make_checkpoint_at()` 会被调用以清除这些不再新检查点未来集中的区块。
 
-Note that the checkpoint mechanism also changes how we handle a new block. For
-a new block:
+值得注意的是检查点机制也改变了我们对新区块的处理方式。对于一个新区块来说：
 
-1. If the new block is outside the subtree of the current checkpoint, we only
-need to insert a stub into our data structure (because a block under the
-subtree may be indirectly referenced via this stub block). We do not need to
-care about such a block because it is not going to change the timer chain and it
-is not going to be executed.
+1. 如果新区块在当前检查点的子树外，则只需要在我们的数据结构中插入一个存根（因为子树下的一个区块可能会被此存根区块间接引用）。我们不需要关心这类区块，因为它既不会改动时钟链也不会被执行。
 
-2. If the past set of the new block does not contain the stable era genesis block, we
-do not need to check the partial invalid status of this block. This is because
-this block will not change the timer chain (recall our assumption that the timer
-chain will not reorg for more than `timer_chain_beta` blocks) and future blocks can reference
-this block directly (since the timer chain difference is already more than `timer_chain_beta`).
+2. 如果新区块的过往集合不包含稳定时代的创世区块，则不需要检查该区块的部分无效状态。这是由于该区块不会修改时钟链（回想一下我们的假设，即重组后时钟链不会超过 `timer_chain_beta` 个区块）且随后的区块可以直接参考该区块（因为时钟链的差距已经超过 `timer_chain_beta` ）。
 
 ### Deferred Execution
 
