@@ -94,7 +94,7 @@ Conflux共识算法将这些选取不正确父区块和填充不正确自适应�
 3. 在时钟链的考虑中会排除部分无效区块。
 
 为了实现规则一，在 `ConsensusNewBlockHandler` 内的 `on_new_block()` 例程会被分割为 `preactivate_block()` 和 `activate_block()` 两个子例程。 `preactivate_block()` 计算并确定区块是否为部分无效区块，而 `activate_block()` 会将区块集成到共识图的内部数据结构中。对于每个新区块， `active_cnt` 追踪其引用了多少个不活跃区块。如果一个区块直接或间接的引用一个部分无效区块，该区块将会是不活跃区块。只有在区块的
-`active_cnt` 变为0时 `activate_block()` 才会被调用。 `activated` 表示区块是否活跃。对于部分无效区块来说，其激活操作将被延迟知道当前账本的时钟链比无效区块高 `timer_chain_beta` 时。新生成的区块不会引用任何不活跃区块，如，这些不活跃块将被视为不在树图中。
+`active_cnt` 变为0时 `activate_block()` 才会被调用。 `activated` 表示区块是否活跃。对于部分无效区块来说，其激活操作将被延迟直到当前账本的时钟链比无效区块高 `timer_chain_beta` 时。新生成的区块不会引用任何不活跃区块，如，这些不活跃块将被视为不在树图中。
 
 ### 光锥外、过往视图和账本视图
 
@@ -166,87 +166,36 @@ Conflux共识算法会*强制确认*一个区块如果：1）区块的子树下�
 由于Conflux中没有明确的coinbase交易，因此只有在交易执行期间会隐式计算所有区块奖励。在Conflux中，区块奖励是由基本奖励和惩罚比率决定的，惩罚比例取决于光锥外区块的总权重除以其时代主轴块的目标难度。 该光锥外集合仅仅考虑不迟于下一个 `REWARD_EPOCH_COUNT` 纪元出现的区块。具体来说，如果有一个新时代，那么光锥外集合也不会计入到这个纪元边界。 `ConsensusExecutor` 中的 `get_pivot_reward_index()` 会计算该奖励的光锥外阈值。 `ConsensusExecutor` 中的
 `get_reward_execution_info_from_index()` 及其子例程在给定主轴链中的阈值点的情况下计算此光锥外集合。
 
-### Blaming Mechanism
+### Blaming机制
 
-It is infeasible to validate the filled state root of a block because we
-would need to execute all transactions in a different order in the past view of
-that block. Instead, we will only ask full nodes to validate the state root
-results on the current pivot chain. It then fills a blame number to indicate
-how many levels ancestors from the parent who do not have correct state root.
-When this number is greater than zero, the filled deferred state root becomes a
-Merkel H256 vector that contains the corrected state roots of the ancestors
-along with the correct one. `get_blame_and_deferred_state_for_generation()` in
-`ConsensusGraph` computes the blame information for the block generation.
-`first_trusted_header_starting_from()` in ``ConsensusGraph`` is a useful helper
-function to compute the first trustworthy header based on the subtree blame
-information.
+验证块的填充状态根是不可行的，其原因是在该区块的过往视图中，我们需要以不同的顺序执行所有交易。相反，我们会要求全节点来验证当前主轴链上的状态根结果。随后它会填充一个blame数以指代来自父级别有多少祖先没有正确的状态根。当该数字大于0时，填充的延迟状态根会成为一个包含其祖先修正状态根信息及正确状态根的Merkle H256向量。
+`ConsensusGraph` 中的 `get_blame_and_deferred_state_for_generation()` 为区块生成计算了blame信息。 ``ConsensusGraph`` 中的
+`first_trusted_header_starting_from()` 是一个有用的帮助函数通过使用子树的blame信息计算第一可信的头信息。
 
-## Multi-Thread Design
+## 多线程设计
 
-The consensus layer has one thread dedicated to processing new blocks from the
-synchronization layer and one thread dedicated to executing transactions. It of
-course also has a set of interface APIs that RPC threads and synchronization
-threads may call.
+共识层有一个专门处理来自同步层的新区块的线程和一个专门用于执行交易的线程。当然它也有一套应用程序接口，RPC线程和同步线程可供调用。
 
 ### Consensus Worker
 
-``Consensus Worker`` is a thread created by the synchronization layer. During
-the normal running phase, every new block will be sent to a channel connecting
-the synchronization thread and the consensus worker thread. The consensus work
-thread consumes each block one by one and invokes `consensus::on_new_block()`
-to process it. Note that the synchronization layer ensures the new block to be
-*header-ready* when it is delivered to `Consensus Worker`, i.e., all of its
-ancestor/past blocks are already delivered to the consensus layer before itself. 
-This enables the consensus layer to always deal with a well-defined
-direct acyclic graph without holes.
+``Consensus Worker`` 是一个由同步层创建的线程。在正常运行阶段每一个新区块都会发送到连接了同步线程和共识工作线程的通道处。共识工作线程逐一读取每个区块，并调用 `consensus::on_new_block()` 来处理它。请注意，同步层确保新区块在交给 `Consensus Worker` 时是*头就绪的*，即当将其派发给 `Consensus Worker` 时，其祖先/过往区块都已交付给共识层。这使得共识层总是在处理一个无洞且定义良好的有向无环图。
 
-One advantage of having a single thread to be dedicated to the consensus
-protocol is that it simplifies the protocol implementation a lot. Because the
-details of the consensus protocol are complicated and the implementation involves
-many sophisticated data structure manipulations, the single thread design makes
-sure that we do not need to worry about deadlocks or races. Upon the entrance
-of `consensus::on_new_block()`, the thread acquires the write lock of the inner
-of the consensus struct (i.e., ConsensusGraphInner). During the normal phase,
-this thread should be the only one modifying the inner struct of the consensus
-layer.
+单线程专门用于共识协议的一个好处是，它简化了很多协议的实现。由于共识协议的细节较为复杂，而且实现过程中涉及到很多复杂的数据结构操作，所以单线程的设计保证了我们不需要担心死锁或竞争。 当 `consensus::on_new_block()` 进入后，线程获得共识结构体内部（即ConsensusGraphInner）的写锁。在正常阶段，该线程应当是唯一一个可以修改共识层内部结构的线程。
 
 ### Consensus Execution Worker
 
-`Consensus Execution Worker` is a thread created at the start of the consensus
-layer. It is dedicated to transaction execution. There is a channel connecting
-`Consensus Worker` with `Consensus Execution Worker`. Once the consensus
-protocol determines the order of the pivot chain, it will send an `ExecutionTask`
-for each epoch in the pivot chain to the channel. These tasks will be picked up
-by the `Consensus Execution Worker` thread one by one. The thread loads the
-previous state before the executed epoch from the storage layer as the input,
-runs all transactions in the executed epoch (see
-``ConsensusExecutor::process_epoch_transactions()``), and produces the result
-state as the output.
+`Consensus Execution Worker` 是在共识层启动时创建的。专门用于执行交易。有通道连接
+`Consensus Worker` 和 `Consensus Execution Worker` 。一旦共识协议确定了主轴链的顺序，它将通过通道为主轴链中的每一个纪元发送 `ExecutionTask` 。这些任务将由`Consensus Execution Worker` 线程逐一获取。线程从存储层加载执行纪元前的前一个状态作为其输入，运行执行纪元中的所有交易（见
+``ConsensusExecutor::process_epoch_transactions()`` ），并产生结果状态作为输出。
 
-The rationale of separating the transaction execution from the consensus
-protocol implementation is for performance. With our *blaming mechanism*, the
-execution result state is completely separated from the consensus protocol
-implementation. The *deferred execution mechanism* gives us extra room to
-pipeline the consensus protocol and the transaction execution. It is therefore
-not wise to block the `Consensus Worker` thread to wait for the execution
-results from coming back.
+将交易执行与共识协议分离的理由是出于对性能的考虑。有了我们的*blaming机制*，执行结果状态与共识协议的实现了完全的分离。*延迟执行机制*给我们提供了额外的空间，让我们可以将共识协议和交易执行进行管道化。因此，阻塞 `Consensus Worker` 线程以等待执行结果返回是不明智的。
 
-## Key Assumptions, Invariants, and Rules
+## 关键假设、不变式和规则
 
-If you want to write code to interact with the Conflux consensus layer, it is
-very important to understand the following assumptions and rules.
+如果要编写代码以与Conflux共识层进行交互，那么了解以下假设和规则非常重要。
 
-1. The consensus layer assumes that the passed `BlockDataManager` is in a
-consistent state. It means that the `BlockDataManager` contains the correct current
-checkpoint/stable height. Blocks before the checkpoint and the stable height
-are properly checked during previous execution and they are persisted into the
-`BlockDataManager` properly. The consensus layer **does not check** the results
-it fetches from the block data manager. If it is inconsistent, the consensus
-layer will execute incorrectly or crash!
+1. 共识层假定传递的`BlockDataManager`处于一致状态。 这意味着`BlockDataManager`包含正确的当前检查点/稳定高度。检查点前的区块和稳定高度在先前执行期间已正确检查，且已正确存储在
+`BlockDataManager` 中。共识层**不检查**从区块数据管理器处获取的结果。如果不一致，则共识层将执行错误或崩溃！
 
-2. Besides the subroutines of `on_new_block()`, **no one should hold the write
-lock of the inner struct**! Right now the only exception for this rule is
-`assemble_new_block_impl()` because of computing the adaptive field and this is
-not good we plan to change it. Acquiring the write lock of the inner struct
-is very likely to cause deadlock given the complexity of the Consensus layer
-and its dependency with many other components. Always try to avoid this!
+2. 除了 `on_new_block()` 子例程之外，**没有人应当持有内部结构体的写锁**！现在由于计算自适应字段，改该规则的唯一例外是
+`assemble_new_block_impl()` ，由于这样是不太妥当的，我们在计划对其进行修改。鉴于共识层的复杂性及其与其他组件的依赖关系，获取内部结构体的写锁很可能会导致死锁。应当始终避免这种情况！
