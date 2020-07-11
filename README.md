@@ -203,10 +203,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/test_framework-cn.md
 
-#### 13、 docs/rigorous-testing.md 严格测试
+#### 13、 docs/rigorous-testing.md 严格测试（7月11日:x:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/rigorous-testing.md
 
-中文地址：
+中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/rigorous-testing-cn.md
 
 #### ~~14、 docs/send_transaction.md 发送交易（`bounty任务已翻译过`）~~
 ~~English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/send_transaction.md~~
