@@ -1,28 +1,17 @@
-# Rigorous Testing Tools for Conflux
+# 针对Conflux的严格测试工具
 
-Ensuring the correctness of a blockchain system like Conflux is a challenging
-task. The Conflux Rust implementation repository comes with several rigorous
-testing tools and scripts.
+确保像Conflux这样的区块链系统的正确性是一项艰巨的任务。Conflux Rust实现的仓库中带有一些严格的测试工具和脚本。
 
-Note that in some terminals, the default maximum number of open file
-descriptors may not be enough. This is especially true if you are using Mac
-with its default zsh terminal. You will need to change the limit to a larger
-number as follows:
+请注意，在某些终端中，打开文件描述符的默认最大数量可能不够。如果您使用带有默认zsh终端的Mac则尤其如此。您将需要将限制更改为更大的数字，如下所示：
 
 ```bash
 $ ulimit -n 22288
 ```
 
-## Unit Tests and Integration Tests
+## 单元测试和集成测试
 
-Unit tests come together with the rust code. It can be invoked via `cargo test
---release --all` after Conflux being complied from the source code. See the
-[Getting Started](https://conflux-chain.github.io/conflux-doc/get_started/)
-page for more information. Integration tests are python test scripts ended with
-`_test.py` in the `tests/scripts` directory. After compiled the *release*
-version of the Conflux from code. One can run `tests/test_all.py` to run all
-integration tests together. These tests are executed routinely for every commit
-to the Conflux Rust implementation. 
+单元测试与rust代码一起提供。可以从源代码级别编译Conflux之后，可以通过 `cargo test
+--release --all` 执行。有关更多的信息，请参考[启程](https://conflux-chain.github.io/conflux-doc/get_started/)。集成测试是存储在目录 `tests/scripts` 中以 `_test.py` 为结尾的python测试脚本。从代码级别编译Conflux的*发行*版本后。可以通过运行 `tests/test_all.py` 一起运行所有集成测试。这些测试会在Conflux Rust实现的每次提交中例行执行。
 
 ## Consensus Fuzzing Tool
 
