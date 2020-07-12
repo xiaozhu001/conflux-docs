@@ -82,7 +82,7 @@ $ cd core/benchmark/storage
 $ RUST_BACKTRACE=full target/release/storage_bench run -g /path/to/foundation.json -t /path/to/eth_from_0_to_4141811_txs.rlp -d /path/to/tmp_storage_db --txs_to_process 30000000 --skip 1156773812
 ```
 
-该命令会处理已经过解析处理过的历史记录文件中的前3000万个交易，随后退出。计算存储层实现的处理吞吐量时，对该命令的运行时间进行计时是一个不错的想法。其具体性能将很大程度上取决于磁盘I/O的质量。在MacBook Pro2019中，吞吐量为25000-30000TPS。在m5a.xlarge中，吞吐量为15000-20000TPS，如果性能低于预期，则表明存储层表现存在潜在的退步。对于每一个发行版本，我们将运行该测试以检查存储层性能。
+该命令会处理已经过解析处理过的历史记录文件中的前3000万个交易，随后退出。计算存储层实现的处理吞吐量时，对该命令的运行时间进行计时是一个不错的想法。其具体性能将很大程度上取决于磁盘I/O的质量。在MacBook Pro2019中，吞吐量为25000-30000TPS。在m5a.xlarge中，吞吐量为15000-20000TPS，如果性能低于预期，则表明存储层实际表现存在潜在的退步。对于每一个发行版本，我们将运行该测试以检查存储层性能。
 
 ## Consensus Performance Benchmark Tool
 
