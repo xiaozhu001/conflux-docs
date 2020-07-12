@@ -13,17 +13,9 @@ $ ulimit -n 22288
 单元测试与rust代码一起提供。可以从源代码级别编译Conflux之后，可以通过 `cargo test
 --release --all` 执行。有关更多的信息，请参考[启程](https://conflux-chain.github.io/conflux-doc/get_started/)。集成测试是存储在目录 `tests/scripts` 中以 `_test.py` 为结尾的python测试脚本。从代码级别编译Conflux的*发行*版本后。可以通过运行 `tests/test_all.py` 一起运行所有集成测试。这些测试会在Conflux Rust实现的每次提交中例行执行。
 
-## Consensus Fuzzing Tool
+## 共识的模糊测试工具
 
-Inside the directory `core/benchmark/consensus/test`, there is a random fuzzing
-tool for the consensus component. It works as follows.
-`core/benchmark/consensus/test/gen-random-graph.cpp` is a slow C++
-implementation of the Conflux TreeGraph consensus algorithm together with a
-random graph generator that generates random TreeGraph blocks in a special
-format. `consensus_bench` is capable of processing this input format, run the
-Conflux consensus, and compare the results with the slow C++ implementation.
-`iter-gen-random.py` is a python script that iteratively invoke the
-generation-processing-comparing process. To run this fuzzing tool:
+在`core/benchmark/consensus/test`目录下，有一款随机模糊测试工具，用于对共识组件进行测试。它按照如下步骤进行工作。 `core/benchmark/consensus/test/gen-random-graph.cpp`是Conflux树图共识算法的C++实现（速度较慢），以及一个随机图生成器，它能以特殊格式生成随机的树图块。`consensus_bench` 能够处理该输入格式，运行Conflux共识并将其结果与速度较慢的C++实现进行比较。 `iter-gen-random.py` 是一个反复调用生成-处理-比较过程的Python脚本。下面给出了运行该工具的方法：
 
 ```bash
 $ cd core/benchmark/consensus/test
@@ -31,17 +23,9 @@ $ g++ -O2 -o gen-random-graph gen-random-graph.cpp
 $ ./iter-gen-random.py 10000 3 30 10 10 100
 ```
 
-The python script will not stop until it finds an error or you manually
-terminate it. If the python script finds an error, the `rand.in` file will
-correspond to the bug triggering input for the `consensus_bench` program. The
-six parameters passed to the python scripts corresponds to the number of
-randomly generated block per test case, the
-`TIMER_CHAIN_BLOCK_DIFFICULTY_RATIO` parameter, the `TIMER_CHAIN_BETA`
-parameter, the `ADAPTIVE_WEIGHT_BETA` parameter, the
-`HEAVY_BLOCK_DIFFICULTY_RATIO` parameter, the `ERA_EPOCH_COUNT` parameter,
-respectively. You can pass any legitimate consensus parameter to the python
-script. These numbers are default that we empirically find them useful for
-detecting bugs.
+Python脚本在找到错误或用户手工终止之前不会停止。如果Python脚本发现错误，则 `rand.in` 文件将会对 `consensus_bench` 程序的错误触发输入进行对应。传递给Python脚本的六个参数分别对应于每个测试用例随机生成的块数，分别为
+`TIMER_CHAIN_BLOCK_DIFFICULTY_RATIO` 参数、 `TIMER_CHAIN_BETA` 参数、 `ADAPTIVE_WEIGHT_BETA` 参数、
+`HEAVY_BLOCK_DIFFICULTY_RATIO` 参数以及 `ERA_EPOCH_COUNT` 参数。您可以将任何合法的共识参数传递给Python。这些数字是默认选择的，我们通过经验发现它们对检测错误很有帮助。
 
 The python script will also print out the processing speed of the consensus
 graph in the test. The expected speed is ~1000 blocks per second (on a Mac Book
