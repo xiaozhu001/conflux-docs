@@ -27,95 +27,55 @@ Python脚本在找到错误或用户手工终止之前不会停止。如果Pytho
 `TIMER_CHAIN_BLOCK_DIFFICULTY_RATIO` 参数、 `TIMER_CHAIN_BETA` 参数、 `ADAPTIVE_WEIGHT_BETA` 参数、
 `HEAVY_BLOCK_DIFFICULTY_RATIO` 参数以及 `ERA_EPOCH_COUNT` 参数。您可以将任何合法的共识参数传递给Python。这些数字是默认选择的，我们通过经验发现它们对检测错误很有帮助。
 
-The python script will also print out the processing speed of the consensus
-graph in the test. The expected speed is ~1000 blocks per second (on a Mac Book
-Pro 2019 laptop) and ~350 blocks per second on m5a.xlarge. If the reported
-speed is significantly lower than expected, it typically means a potential
-performance issue. For every release, we execute this fuzzing for at least one
-hour using the default parameters.
+Python脚本还将打印出测试中共识图的处理速度。预期速度为每秒约1000个区块（在MacBook Pro 2019笔记本电脑上），而在m5a.xlarge上为每秒约350个区块。如果报告的速度大大低于预期的速度，则通常意味着潜在的性能问题。对于每个发行版，我们使用的默认参数至少需要执行一个小时的模糊测试。
 
-Note that if you terminate this script brutally (which you will like do). It
-leaves two to three temporary directories with the `__` prefix and `sqlite_db`.
-You should remove these directories manually.
+请注意，如果您暴力的终止了该脚本（你很可能喜欢这样做）。它会留下两到三个前缀带有 `__` 和 `sqlite_db` 的临时目录。您应该手工删除这些目录。
 
-## Random Tracing Test
+## 随机追踪测试
 
-`tests/conflux_tracing.py` is a random testing script with the failure
-injection capability. It will start a Conflux network with a fixed number of
-nodes and inject node crashes, db crashes, and node restarts during. During the
-running, it keep fetches states from different node and verify that these nodes
-have the consensus for the TreeGraph and block state. To run Conflux tracing,
-you need to first compile the release version of the Conflux Rust implementation
-from the source code. Then you can invoke the script as follows:
+`tests/conflux_tracing.py` 是一个包含错误注入能力的随机测试脚本。它将以固定的节点数启用Conflux网络，并注入节点崩溃、db崩溃和节点重启。在运行期间，它会不断从不同的节点上获取状态，并验证这些节点是否有树图和快状态的共识。要运行Conflux追踪测试您需要首先从源码级别编译Conflux Rust实现的发布版本。随后你可以调用如下脚本：
 
 ```bash
 $ tests/conflux_tracing.py run
 ```
 
-The python script will then start 10 different instances together with a mock
-instance. It will run non-stop until it finds an error (inconsistent state or
-unexpected crash). For every release, we execute this tracing script for at
-least one hour. 
+随后Python脚本将启动10个不同的实例及一个模拟实例。它将不停地运行，直至发现一个错误（不一致的状态或意外的崩溃）。碎玉每一个发型版本，我们都会执行该跟踪脚本至少一小时。
 
-In case of errors, it will generate trace files `snapshot*.json` and
-`txs*.json` to help diagnose the issue. Note that if you terminate this script
-brutally (which you will likely do). It also generates these files so you may
-want to clean them manually.
+如果出现错误，它将生成跟踪文件`snapshot*.json` 和
+`txs*.json`来帮助诊断问题。请注意，如果你暴力终止该脚本（你可能会这样做）。它也会生成上述文件，所以你可能要手动清理它们。
 
-## Transaction Propagation and Performance Test
+## 交易传递及性能测试
 
-`tests/scripts/one_click.sh` together with the remaining bash scripts in the
-same directory provide an automatic deployment of Conflux network on AWS for
-testing the simple payment TPS and transaction pool performance. You can run
-this test as follows:
+`tests/scripts/one_click.sh` 以及其余的bash脚本都位于同一个目录中，可以在AWS上自动部署Conflux网络，以测试简单的交易TPS和交易池性能。您可以按照以下方式运行该测试：
 
-1. First you need to download and install AWS CLI tools. Properly configure the
-AWS credential for the CLI tool.
+1. 首先，您需要下载并安装AWS CLI工具。 正确配置CLI工具的AWS凭证。
 
-2. Make your default public key registered as a named key pair in *the us-west-2 region*.
+2. 使您的默认公钥在*the us-west-2 region*中登记为命名密钥对。
 
-3. Decide the branch of the Conflux repo you want to test. Note that this
-script pulls the source code from a GitHub repo that contains the Conflux rust
-implementation and compile them on the fly. You cannot run your local Conflux
-copy with this script. If you do not specify the repo/branch name, it will pull
-from the official Conflux-rust repo from the GitHub.
+3. 确定您要测试的Conflux仓库的分支。请注意，此脚本从包含Conflux rust实现的GitHub存储库中提取源代码，并即时对其进行编译。您不能使用此脚本运行本地Conflux副本。如果您未指定存储库/分支名称，它将从GitHub的官方Conflux-rust存储库中提取源代码。
 
-4. Run the following command:
+4. 运行以下命令：
 
 ```bash
 $ cd tests/scripts
 $ ./one_click.sh key-pair-name 20 branch-name [repo-name]
 ```
 
-This will start 20 instances at the us-west-2 region together with a random
-transaction generator. It will take roughly 15 minutes to setup the experiments
-and then 20 minutes to finish the run. In the end, it will report the TPS
-performance. The expected good TPS number is ~4000TPS. If you get a TPS number
-much lower than the expectation, there is a performance regression at the
-transaction pool or at the storage layer. For every release, we run this script
-to test its performance.
+这将在us-west-2区域与随机交易生成器一起启动20个实例。设置实验环境大约需要15分钟，随后需要20分钟才能完成运行。最后，它将报告TPS性能。预期的良好TPS数量约为4000TPS。如果您获得的TPS数量远低于预期，则在事务池或存储层会出现性能下降。对于每个发行版，我们都会运行此脚本来测试其性能。
 
-## Storage Benchmark Test
+## 存储基准测试
 
-The storage layer in Conflux is often the performance bottleneck.
-`core/benchmark/storage` therefore contains a benchmark tool to measure the
-performance of the storage layer, eliminating other layer from the execution.
-We also converted Ethereum network history payment transactions (first ~4m
-blocks) as the benchmark traces. Here are steps to run the storage benchmark
-test:
+Conflux中的存储层通常面临着性能瓶颈。 `core/benchmark/storage` 因此包含了一个基准工具以度量存储层的性能，并在执行中消除其它层。我们还转换了以太坊网络的历史支付交易信息（大约钱400万个区块）作为基准进行跟踪。一下是运行存储基准测试的步骤：
 
-1. From the AWS S3 `conflux-storage-bench` bucket, download `foundation.json`
-and `eth_from_0_to_4141811_txs.rlp.tar.gz`.
+1. 从AWS S3的 `conflux-storage-bench` 存储桶中下载 `foundation.json` 及 `eth_from_0_to_4141811_txs.rlp.tar.gz` 。
 
-2. Untar the rlp history file to obtain `eth_from_0_to_4141811_txs.rlp`.
+2. 解压缩rlp历史文件以获得 `eth_from_0_to_4141811_txs.rlp` 。
 
-3. Go to `core/benchmark/storage` and run `cargo build --release` to compile
-the binary `storage_bench`.
+3. 进入 `core/benchmark/storage` 目录并运行 `cargo build --release` 编译二进制文件 `storage_bench` 。
 
-4. Create a temporary directory `tmp_storage_db` for holding the blockchain
-database generated in the experiment.
+4. 创建一个临时目录 `tmp_storage_db` 用于保存实验中生成的区块链数据库。
 
-5. Invoke the following command:
+5. 执行下列命令：
 
 ```bash
 $ cd core/benchmark/storage
