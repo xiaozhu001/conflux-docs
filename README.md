@@ -7,10 +7,10 @@ English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/dev
 
 中文地址： https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-portal/README-cn.md
 
-#### 2、 CHANGELOG.md 变更记录
-English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/CHANGELOG.md
+####~~ 2、 CHANGELOG.md 变更记录~~
+~~English link address ：https://github.com/Conflux-Chain/conflux-portal/blob/develop/CHANGELOG.md~~
 
-中文地址： 
+~~中文地址：~~ 
 
 #### 3、 MISSION.md  使命（6月25日:white_check_mark:）
 English link address ： https://github.com/Conflux-Chain/conflux-portal/blob/develop/MISSION.md
@@ -203,7 +203,7 @@ English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/test_framework-cn.md
 
-#### 13、 docs/rigorous-testing.md 严格测试（7月11日:x:）
+#### 13、 docs/rigorous-testing.md 严格测试（7月12日:white_check_mark:）
 English link address ：https://github.com/Conflux-Chain/conflux-doc/blob/master/docs/rigorous-testing.md
 
 中文地址：https://github.com/xiaozhu001/conflux-docs/blob/repo_class/conflux-doc/docs/rigorous-testing-cn.md
